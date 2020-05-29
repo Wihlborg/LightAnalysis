@@ -25,6 +25,7 @@
     </Endpoints>
     <Contents>
       <Content destination=".\">
+<<<<<<< HEAD
         <SourceDirectory path="C:\Users\Oskar\LightAnalysis\rcf\Debug\WebRole1Content\" />
       </Content>
       <Content destination=".\">
@@ -34,6 +35,11 @@
     <Imports>
       <Import moduleName="Diagnostics" />
     </Imports>
+=======
+        <SourceDirectory path="C:\Users\lirid\source\repos\LightAnalysis\rcf\Debug\WebRole1Content\" />
+      </Content>
+    </Contents>
+>>>>>>> 1218fd5ceb5199ac49f196e7e2371e7e925a1d7b
   </WebRole>
   <WorkerRole name="WorkerRole1" vmsize="Standard_D1_v2">
     <ConfigurationSettings>
@@ -41,6 +47,7 @@
     </ConfigurationSettings>
     <Contents>
       <Content destination=".\">
+<<<<<<< HEAD
         <SourceDirectory path="C:\Users\Oskar\LightAnalysis\rcf\Debug\WorkerRole1Content\" />
       </Content>
       <Content destination=".\">
@@ -50,5 +57,10 @@
     <Imports>
       <Import moduleName="Diagnostics" />
     </Imports>
+=======
+        <SourceDirectory path="C:\Users\lirid\source\repos\LightAnalysis\rcf\Debug\WorkerRole1Content\" />
+      </Content>
+    </Contents>
+>>>>>>> 1218fd5ceb5199ac49f196e7e2371e7e925a1d7b
   </WorkerRole>
 </ServiceDefinition>
