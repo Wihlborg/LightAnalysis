@@ -1,0 +1,17 @@
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-29 10:03:52] At least one other instance of the launcher is running. Will wait until they all finish
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-29 10:03:52] Service running in Emulator Mode, will not wait/kill other instances of the launcher
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-29 10:03:52] Emulator config file set to C:\Users\Oskar\LightAnalysis\csx\Debug\roles\WorkerRole1\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-29 10:03:52] DiagnosticsStoreRootPath set to: C:\Users\Oskar\AppData\Local\dftmp\Resources\864f5770-226a-4701-9f59-f4ad0e02b819
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-29 10:03:52] Loading config file: C:\Users\Oskar\LightAnalysis\csx\Debug\roles\WorkerRole1\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-29 10:03:52] Config file to read: C:\Users\Oskar\LightAnalysis\csx\Debug\roles\WorkerRole1\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-29 10:03:52] Checking VM Type
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-29 10:03:52] Emulator config file set to C:\Users\Oskar\LightAnalysis\csx\Debug\roles\WorkerRole1\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-29 10:03:52] Extension set to Emulator Mode
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-29 10:03:52] Reading XML configuration file
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-29 10:03:52] Bypassing private config decryption
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-29 10:03:52] Stopping the running plugin, if any
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-29 10:03:52] No DiagnosticsPlugin is running.
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-29 10:03:52] Killing any DiagnosticsPlugin that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-29 10:03:52] Killing any MonAgentHost that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-29 10:03:52] Diagnostics plugin stopped successfully
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-29 10:03:52] Resetting DiagnosticPlugin
