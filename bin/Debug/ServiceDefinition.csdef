@@ -25,9 +25,15 @@
     </Endpoints>
     <Contents>
       <Content destination=".\">
-        <SourceDirectory path="C:\Users\lirid\source\repos\LightAnalysis\rcf\Debug\FrontendContent\" />
+        <SourceDirectory path="C:\Users\Oskar\LightAnalysis\rcf\Debug\FrontendContent\" />
+      </Content>
+      <Content destination=".\">
+        <SourceDirectory path="C:\Users\Oskar\LightAnalysis\ecf\FrontendContent\" />
       </Content>
     </Contents>
+    <Imports>
+      <Import moduleName="Diagnostics" />
+    </Imports>
   </WebRole>
   <WorkerRole name="Backend" vmsize="Standard_D1_v2">
     <ConfigurationSettings>
@@ -35,8 +41,14 @@
     </ConfigurationSettings>
     <Contents>
       <Content destination=".\">
-        <SourceDirectory path="C:\Users\lirid\source\repos\LightAnalysis\rcf\Debug\BackendContent\" />
+        <SourceDirectory path="C:\Users\Oskar\LightAnalysis\rcf\Debug\BackendContent\" />
+      </Content>
+      <Content destination=".\">
+        <SourceDirectory path="C:\Users\Oskar\LightAnalysis\ecf\BackendContent\" />
       </Content>
     </Contents>
+    <Imports>
+      <Import moduleName="Diagnostics" />
+    </Imports>
   </WorkerRole>
 </ServiceDefinition>
