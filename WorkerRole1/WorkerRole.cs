@@ -20,7 +20,7 @@ namespace WorkerRole1
         public override void Run()
         {
             Trace.TraceInformation("WorkerRole1 is running");
-
+            //Just checking if it works saving and pushing to github
             try
             {
                 this.RunAsync(this.cancellationTokenSource.Token).Wait();
