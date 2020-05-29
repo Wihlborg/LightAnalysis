@@ -9,7 +9,7 @@
   **********************************************************************************************
 -->
 <ServiceDefinition name="LightAnalysis" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6">
-  <WebRole name="WebRole1" vmsize="Standard_D1_v2">
+  <WebRole name="Frontend" vmsize="Standard_D1_v2">
     <Sites>
       <Site name="Web">
         <Bindings>
@@ -25,42 +25,18 @@
     </Endpoints>
     <Contents>
       <Content destination=".\">
-<<<<<<< HEAD
-        <SourceDirectory path="C:\Users\Oskar\LightAnalysis\rcf\Debug\WebRole1Content\" />
-      </Content>
-      <Content destination=".\">
-        <SourceDirectory path="C:\Users\Oskar\LightAnalysis\ecf\WebRole1Content\" />
+        <SourceDirectory path="C:\Users\lirid\source\repos\LightAnalysis\rcf\Debug\FrontendContent\" />
       </Content>
     </Contents>
-    <Imports>
-      <Import moduleName="Diagnostics" />
-    </Imports>
-=======
-        <SourceDirectory path="C:\Users\lirid\source\repos\LightAnalysis\rcf\Debug\WebRole1Content\" />
-      </Content>
-    </Contents>
->>>>>>> 1218fd5ceb5199ac49f196e7e2371e7e925a1d7b
   </WebRole>
-  <WorkerRole name="WorkerRole1" vmsize="Standard_D1_v2">
+  <WorkerRole name="Backend" vmsize="Standard_D1_v2">
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
     </ConfigurationSettings>
     <Contents>
       <Content destination=".\">
-<<<<<<< HEAD
-        <SourceDirectory path="C:\Users\Oskar\LightAnalysis\rcf\Debug\WorkerRole1Content\" />
-      </Content>
-      <Content destination=".\">
-        <SourceDirectory path="C:\Users\Oskar\LightAnalysis\ecf\WorkerRole1Content\" />
+        <SourceDirectory path="C:\Users\lirid\source\repos\LightAnalysis\rcf\Debug\BackendContent\" />
       </Content>
     </Contents>
-    <Imports>
-      <Import moduleName="Diagnostics" />
-    </Imports>
-=======
-        <SourceDirectory path="C:\Users\lirid\source\repos\LightAnalysis\rcf\Debug\WorkerRole1Content\" />
-      </Content>
-    </Contents>
->>>>>>> 1218fd5ceb5199ac49f196e7e2371e7e925a1d7b
   </WorkerRole>
 </ServiceDefinition>

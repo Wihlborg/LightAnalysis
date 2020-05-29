@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>2.9</ProductVersion>
-    <ProjectGuid>8234aebb-897c-476f-a7e7-b560b8b16593</ProjectGuid>
+    <ProjectGuid>b280d808-4383-4cf9-b50c-1da437e01e4d</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LightAnalysis</RootNamespace>
@@ -37,30 +37,30 @@
     <ServiceConfiguration Include="ServiceConfiguration.Cloud.cscfg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="WebRole1\WebRole1.csproj">
-      <Name>WebRole1</Name>
-      <Project>{9b90f622-44b4-4127-b06b-e519c7e70599}</Project>
-      <Private>True</Private>
-      <RoleType>Web</RoleType>
-      <RoleName>WebRole1</RoleName>
-      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
-    </ProjectReference>
-    <ProjectReference Include="WorkerRole1\WorkerRole1.csproj">
-      <Name>WorkerRole1</Name>
-      <Project>{e91513cf-dc1e-4f2b-b2d6-88a9e94ea632}</Project>
+    <ProjectReference Include="Backend\Backend.csproj">
+      <Name>Backend</Name>
+      <Project>{bb5ea471-d6aa-4875-80d5-6971f79f1831}</Project>
       <Private>True</Private>
       <RoleType>Worker</RoleType>
-      <RoleName>WorkerRole1</RoleName>
+      <RoleName>Backend</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
+    <ProjectReference Include="Frontend\Frontend.csproj">
+      <Name>Frontend</Name>
+      <Project>{1a4eee00-dad0-4931-9b20-4a05f04418e2}</Project>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <RoleName>Frontend</RoleName>
       <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="WebRole1Content\" />
-    <Folder Include="WorkerRole1Content\" />
+    <Folder Include="BackendContent\" />
+    <Folder Include="FrontendContent\" />
   </ItemGroup>
   <ItemGroup>
-    <DiagnosticsConfiguration Include="WebRole1Content\diagnostics.wadcfgx" />
-    <DiagnosticsConfiguration Include="WorkerRole1Content\diagnostics.wadcfgx" />
+    <DiagnosticsConfiguration Include="BackendContent\diagnostics.wadcfgx" />
+    <DiagnosticsConfiguration Include="FrontendContent\diagnostics.wadcfgx" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>
