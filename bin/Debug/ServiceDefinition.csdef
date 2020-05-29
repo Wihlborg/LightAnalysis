@@ -27,13 +27,7 @@
       <Content destination=".\">
         <SourceDirectory path="C:\Users\lirid\source\repos\LightAnalysis\rcf\Debug\WebRole1Content\" />
       </Content>
-      <Content destination=".\">
-        <SourceDirectory path="C:\Users\lirid\source\repos\LightAnalysis\ecf\WebRole1Content\" />
-      </Content>
     </Contents>
-    <Imports>
-      <Import moduleName="Diagnostics" />
-    </Imports>
   </WebRole>
   <WorkerRole name="WorkerRole1" vmsize="Standard_D1_v2">
     <ConfigurationSettings>
@@ -43,12 +37,6 @@
       <Content destination=".\">
         <SourceDirectory path="C:\Users\lirid\source\repos\LightAnalysis\rcf\Debug\WorkerRole1Content\" />
       </Content>
-      <Content destination=".\">
-        <SourceDirectory path="C:\Users\lirid\source\repos\LightAnalysis\ecf\WorkerRole1Content\" />
-      </Content>
     </Contents>
-    <Imports>
-      <Import moduleName="Diagnostics" />
-    </Imports>
   </WorkerRole>
 </ServiceDefinition>
