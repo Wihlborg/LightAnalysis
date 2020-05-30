@@ -1,0 +1,16 @@
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-30 14:00:27] Emulator config file set to C:\Users\lirid\source\repos\LightAnalysis\csx\Debug\roles\Backend\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-30 14:00:27] DiagnosticsStoreRootPath set to: C:\Users\lirid\AppData\Local\dftmp\Resources\fb7a1750-d85c-49f2-8c50-49d0b2f55fd1
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-30 14:00:27] Loading config file: C:\Users\lirid\source\repos\LightAnalysis\csx\Debug\roles\Backend\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-30 14:00:27] Config file to read: C:\Users\lirid\source\repos\LightAnalysis\csx\Debug\roles\Backend\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-30 14:00:27] Checking VM Type
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-30 14:00:27] Emulator config file set to C:\Users\lirid\source\repos\LightAnalysis\csx\Debug\roles\Backend\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-30 14:00:27] Extension set to Emulator Mode
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-30 14:00:27] Reading XML configuration file
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-30 14:00:27] Bypassing private config decryption
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-30 14:00:27] Stopping the running plugin, if any
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-30 14:00:28] Found a MonAgentHost.exe. WadArguments: "C:\Users\lirid\source\repos\LightAnalysis\csx\Debug\roles\Frontend\plugins\Diagnostics\Monitor\x64\MonAgentHost.exe" -LocalPath "C:\Users\lirid\AppData\Local\dftmp\Resources\5ae4cbad-4432-4519-817b-e254964752d5\WAD0105"  -ConfigFile "C:\Users\lirid\AppData\Local\dftmp\Resources\5ae4cbad-4432-4519-817b-e254964752d5\WAD0105\Configuration\MaConfig.xml" -ShutDownEvent WADDM-ShutDown-71ae19308a264d8db00a77db788306d6  -TotalShutDownEvent WADDM-TotalShutDown-71ae19308a264d8db00a77db788306d6 -InitializedEvent WADM-StartUp-71ae19308a264d8db00a77db788306d6 -parent 11800 -events -wadVer1v5 -UseProxyServer -XStoreAccounts WadAccount#true#devstoreaccount1#Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==#http://127.0.0.1:10002#http://127.0.0.1:10001#http://127.0.0.1:10000.
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-30 14:00:28] Found a DiagnosticsPlugin.exe. WadArguments: "C:\Users\lirid\source\repos\LightAnalysis\csx\Debug\roles\Frontend\plugins\Diagnostics\DiagnosticsPlugin.exe" DiagnosticPlugin-ShutdownEvent DiagnosticPlugin-TotalShutdownEvent -wadVer1v5.
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-30 14:00:28] Loading config file: C:\Users\lirid\source\repos\LightAnalysis\csx\Debug\roles\Backend\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-30 14:00:28] Config file to read: C:\Users\lirid\source\repos\LightAnalysis\csx\Debug\roles\Backend\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-30 14:00:28] Reading XML configuration file
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-05-30 14:00:28] Bypassing private config decryption
