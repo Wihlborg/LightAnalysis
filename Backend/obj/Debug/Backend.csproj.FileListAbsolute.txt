@@ -187,3 +187,4 @@ C:\Users\lirid\source\repos\LightAnalysis\Backend\obj\Debug\Backend.csproj.CoreC
 C:\Users\lirid\source\repos\LightAnalysis\Backend\obj\Debug\Backend.csproj.CopyComplete
 C:\Users\lirid\source\repos\LightAnalysis\Backend\obj\Debug\Backend.dll
 C:\Users\lirid\source\repos\LightAnalysis\Backend\obj\Debug\Backend.pdb
+C:\Users\Oskar\LightAnalysis\Backend\bin\Debug\mongocrypt.dll

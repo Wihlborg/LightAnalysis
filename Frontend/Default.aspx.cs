@@ -57,10 +57,7 @@ namespace Frontend
             // Create the queue if it doesn't already exist
             outqueue.CreateIfNotExists();
         }
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
+        
         protected void OnclickRegister(object sender, EventArgs e)
         {
             Response.Redirect("Register.aspx", false);
@@ -79,11 +76,22 @@ namespace Frontend
 
                 //Class object for Json String
                 LoginFrontend loginFrontend = new LoginFrontend();
+<<<<<<< HEAD
                 loginFrontend.email = accountName;
                 loginFrontend.password = password;
                 string jsonString;
                 jsonString = JsonSerializer.Serialize(loginFrontend);
                 Debug.WriteLine("DEBUG jsonString: " + jsonString);
+=======
+                loginFrontend.emailz = AccountName;
+                loginFrontend.pwz = Password;
+
+
+               
+
+
+               //outMessage = new CloudQueueMessage();
+>>>>>>> 82670aeca625ffbb9727c05e93f9657c70a1de9e
 
                 outMessage = new CloudQueueMessage(jsonString);
                 outqueue.AddMessage(outMessage);

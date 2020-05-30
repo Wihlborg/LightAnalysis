@@ -282,3 +282,4 @@ C:\Users\lirid\source\repos\LightAnalysis\UserAuthentication\obj\Debug\UserAuthe
 C:\Users\lirid\source\repos\LightAnalysis\UserAuthentication\obj\Debug\UserAuthentication.csproj.CopyComplete
 C:\Users\lirid\source\repos\LightAnalysis\UserAuthentication\obj\Debug\UserAuthentication.dll
 C:\Users\lirid\source\repos\LightAnalysis\UserAuthentication\obj\Debug\UserAuthentication.pdb
+C:\Users\Oskar\LightAnalysis\UserAuthentication\bin\Debug\mongocrypt.dll
