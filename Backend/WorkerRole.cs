@@ -12,6 +12,7 @@ using Microsoft.WindowsAzure.Storage;
 
 namespace Backend
 {
+    //worker
     public class WorkerRole : RoleEntryPoint
     {
         private readonly CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();

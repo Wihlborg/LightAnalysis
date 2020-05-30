@@ -22,8 +22,10 @@ using System.Text.Json;
 
 namespace Frontend
 {
+
     public partial class _Default : Page
-    {
+    {   
+        //Strings
         private String accountName = "rallestorage";
         private String accountKey = "OLPmb7rXZfl2e+z2xM46/auXeesW9b11JdbRBLzdGzBJnpRglUAHhFpMJAr/PG48AAZHyGfHWTyS9N/P2MSx2g==";
         private StorageCredentials creds;
