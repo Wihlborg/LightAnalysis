@@ -53,12 +53,13 @@
       <RoleName>Frontend</RoleName>
       <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
-    <ProjectReference Include="UserAthentication\UserAuthentication.csproj">
+    <ProjectReference Include="UserAuthentication\UserAuthentication.csproj">
       <Name>UserAuthentication</Name>
-      <Project>{5043de41-f05f-430a-8745-96e9a6e8d4ba}</Project>
+      <Project>{0417221b-89d8-4434-bf3b-fa80fb37c26a}</Project>
       <Private>True</Private>
       <RoleType>Worker</RoleType>
       <RoleName>UserAuthentication</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

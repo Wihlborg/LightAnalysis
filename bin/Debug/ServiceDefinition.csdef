@@ -25,10 +25,10 @@
     </Endpoints>
     <Contents>
       <Content destination=".\">
-        <SourceDirectory path="C:\Users\Oskar\LightAnalysis\rcf\Debug\FrontendContent\" />
+        <SourceDirectory path="C:\Users\Ralle\Desktop\New folder\LightAnalysis\rcf\Debug\FrontendContent\" />
       </Content>
       <Content destination=".\">
-        <SourceDirectory path="C:\Users\Oskar\LightAnalysis\ecf\FrontendContent\" />
+        <SourceDirectory path="C:\Users\Ralle\Desktop\New folder\LightAnalysis\ecf\FrontendContent\" />
       </Content>
     </Contents>
     <Imports>
@@ -41,10 +41,26 @@
     </ConfigurationSettings>
     <Contents>
       <Content destination=".\">
-        <SourceDirectory path="C:\Users\Oskar\LightAnalysis\rcf\Debug\BackendContent\" />
+        <SourceDirectory path="C:\Users\Ralle\Desktop\New folder\LightAnalysis\rcf\Debug\BackendContent\" />
       </Content>
       <Content destination=".\">
-        <SourceDirectory path="C:\Users\Oskar\LightAnalysis\ecf\BackendContent\" />
+        <SourceDirectory path="C:\Users\Ralle\Desktop\New folder\LightAnalysis\ecf\BackendContent\" />
+      </Content>
+    </Contents>
+    <Imports>
+      <Import moduleName="Diagnostics" />
+    </Imports>
+  </WorkerRole>
+  <WorkerRole name="UserAuthentication" vmsize="Standard_D1_v2">
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
+    </ConfigurationSettings>
+    <Contents>
+      <Content destination=".\">
+        <SourceDirectory path="C:\Users\Ralle\Desktop\New folder\LightAnalysis\rcf\Debug\UserAuthenticationContent\" />
+      </Content>
+      <Content destination=".\">
+        <SourceDirectory path="C:\Users\Ralle\Desktop\New folder\LightAnalysis\ecf\UserAuthenticationContent\" />
       </Content>
     </Contents>
     <Imports>

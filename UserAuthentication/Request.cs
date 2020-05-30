@@ -9,9 +9,9 @@ namespace UserAuthentication
 
     class Request
     {
-        public static readonly string LOGIN = "LOGIN";
-        public static readonly string REGISTER = "REGISTER";
-        public static readonly string CHECKIN = "CHECKIN";
+        public const string LOGIN = "LOGIN";
+        public const string REGISTER = "REGISTER";
+        public const string CHECKIN = "CHECKIN";
 
         public string method;
         public string id;
