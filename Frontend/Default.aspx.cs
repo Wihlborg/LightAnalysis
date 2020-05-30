@@ -75,8 +75,8 @@ namespace Frontend
 
 
                 LoginFrontend loginFrontend = new LoginFrontend();
-                loginFrontend.emailz = AccountName;
-                loginFrontend.pwz = Password;
+                loginFrontend.email = AccountName;
+                loginFrontend.pw = Password;
 
 
                
