@@ -5,9 +5,8 @@ using System.Web;
 
 namespace Frontend
 {
-    public class LoginFrontend
+    public class RegisterUser
     {
-    
 
         public String email { get; set; }
         public String pw { get; set; }

@@ -56,10 +56,7 @@ namespace Frontend
             // Create the queue if it doesn't already exist
             outqueue.CreateIfNotExists();
         }
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
+        
         protected void OnclickRegister(object sender, EventArgs e)
         {
             Response.Redirect("Register.aspx", false);
@@ -85,7 +82,7 @@ namespace Frontend
                
 
 
-               // outMessage = new CloudQueueMessage();
+               //outMessage = new CloudQueueMessage();
 
                 outqueue.AddMessage(outMessage);
 
