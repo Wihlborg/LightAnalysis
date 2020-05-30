@@ -13,6 +13,7 @@ using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Queue;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using MongoDB.Driver;
 
 namespace UserAuthentication
 {
@@ -29,6 +30,10 @@ namespace UserAuthentication
         private CloudQueueClient queueClient;
         private CloudQueue inqueue, outqueue;
         private CloudQueueMessage inMessage, outMessage;
+        
+        private readonly MongoClient client = new Dal().client;
+
+        private int[] currentUsers;
 
         public override void Run()
         {
@@ -71,8 +76,33 @@ namespace UserAuthentication
             Trace.TraceInformation("UserAuthentication has stopped");
         }
 
+        private void InitQueues()
+        {
+            creds = new StorageCredentials(accountName, accountKey);
+            storageAccount = new CloudStorageAccount(creds, useHttps: true);
+
+            // Create the queue client
+            queueClient = storageAccount.CreateCloudQueueClient();
+
+            // Retrieve a reference to a queue
+            inqueue = queueClient.GetQueueReference("authrequestqueue");
+
+            // Create the queue if it doesn't already exist
+            inqueue.CreateIfNotExists();
+
+            // Retrieve a reference to a queue
+            outqueue = queueClient.GetQueueReference("authresponsequeue");
+
+            // Create the queue if it doesn't already exist
+            outqueue.CreateIfNotExists();
+
+            outqueue.Clear();
+            inqueue.Clear();
+        }
+
         private async Task RunAsync(CancellationToken cancellationToken)
         {
+            InitQueues();
             // TODO: Replace the following with your own logic.
             while (!cancellationToken.IsCancellationRequested)
             {
@@ -88,6 +118,15 @@ namespace UserAuthentication
                         switch (request.method)
                         {
                             case Request.LOGIN:
+                                var collection = client.GetDatabase("lightanalysis").GetCollection<Account>("account");
+
+                                var filter = Builders<Account>.Filter.Eq("email", request.account.email);
+                                var result = collection.Find(filter).ToList();
+
+                                if (result.ElementAt(0).pw == request.account.pw)
+                                {
+
+                                }
 
                                 break;
                             case Request.REGISTER:

@@ -13,8 +13,8 @@ namespace UserAuthentication
         public const string REGISTER = "REGISTER";
         public const string CHECKIN = "CHECKIN";
 
-        public string method;
-        public string id;
-        public Account account;
+        public string method { get; set; }
+        public string id { get; set; }
+        public Account account { get; set; }
     }
 }

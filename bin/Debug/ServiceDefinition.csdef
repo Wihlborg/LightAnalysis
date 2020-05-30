@@ -59,12 +59,6 @@
       <Content destination=".\">
         <SourceDirectory path="C:\Users\Ralle\Desktop\New folder\LightAnalysis\rcf\Debug\UserAuthenticationContent\" />
       </Content>
-      <Content destination=".\">
-        <SourceDirectory path="C:\Users\Ralle\Desktop\New folder\LightAnalysis\ecf\UserAuthenticationContent\" />
-      </Content>
     </Contents>
-    <Imports>
-      <Import moduleName="Diagnostics" />
-    </Imports>
   </WorkerRole>
 </ServiceDefinition>

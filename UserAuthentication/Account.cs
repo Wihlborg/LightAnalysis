@@ -8,8 +8,8 @@ namespace UserAuthentication
 {     
     class Account
     {
-        string email { get; set; }
-        string pw { get; set; }
-        string isAdmin { get; set; }
+        public string email { get; set; }
+        public string pw { get; set; }
+        public string isAdmin { get; set; }
     }
 }
