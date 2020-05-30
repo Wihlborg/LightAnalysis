@@ -19,6 +19,7 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Queue;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Frontend
 {
@@ -73,20 +74,18 @@ namespace Frontend
 
             if (accountNamez.Text!=null && passwordz.Text!=null)
             {
-                String AccountName = accountNamez.Text;
-                String Password = passwordz.Text;
+                string accountName = accountNamez.Text;
+                string password = passwordz.Text;
 
-
+                //Class object for Json String
                 LoginFrontend loginFrontend = new LoginFrontend();
-                loginFrontend.emailz = AccountName;
-                loginFrontend.pwz = Password;
+                loginFrontend.email = accountName;
+                loginFrontend.password = password;
+                string jsonString;
+                jsonString = JsonSerializer.Serialize(loginFrontend);
+                Debug.WriteLine("DEBUG jsonString: " + jsonString);
 
-
-               
-
-
-               // outMessage = new CloudQueueMessage();
-
+                outMessage = new CloudQueueMessage(jsonString);
                 outqueue.AddMessage(outMessage);
 
             }
