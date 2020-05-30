@@ -1,6 +1,12 @@
+<<<<<<< HEAD
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:26:48] Starting DiagnosticPlugin.exe DiagnosticPlugin-ShutdownEvent DiagnosticPlugin-TotalShutdownEvent -wadVer1v5
+DiagnosticsPlugin.exe Error: 0 : [2020-05-30 14:26:48] Failed to save IIS Directory state
+DiagnosticsPlugin.exe Error: 0 : [2020-05-30 14:26:48] System.Runtime.InteropServices.COMException (0x80040154): Hämtningen av COM-klassfabriken för komponenten med CLSID {2B72133B-3F5B-4602-8952-803546CE3344} misslyckades på grund av följande fel: 80040154 Klassen har inte registrerats (Undantag från HRESULT: 0x80040154 (REGDB_E_CLASSNOTREG)).
+=======
 DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:25:22] Starting DiagnosticPlugin.exe DiagnosticPlugin-ShutdownEvent DiagnosticPlugin-TotalShutdownEvent -wadVer1v5
 DiagnosticsPlugin.exe Error: 0 : [2020-05-30 14:25:22] Failed to save IIS Directory state
 DiagnosticsPlugin.exe Error: 0 : [2020-05-30 14:25:22] System.Runtime.InteropServices.COMException (0x80040154): Hämtningen av COM-klassfabriken för komponenten med CLSID {2B72133B-3F5B-4602-8952-803546CE3344} misslyckades på grund av följande fel: 80040154 Klassen har inte registrerats (Undantag från HRESULT: 0x80040154 (REGDB_E_CLASSNOTREG)).
+>>>>>>> 82670aeca625ffbb9727c05e93f9657c70a1de9e
    vid System.Runtime.Remoting.RemotingServices.AllocateUninitializedObject(RuntimeType objectType)
    vid System.Runtime.Remoting.Activation.ActivationServices.CreateInstance(RuntimeType serverType)
    vid System.Runtime.Remoting.Activation.ActivationServices.IsCurrentContextOK(RuntimeType serverType, Object[] props, Boolean bNewObj)
@@ -13,6 +19,20 @@ DiagnosticsPlugin.exe Error: 0 : [2020-05-30 14:25:22] System.Runtime.InteropSer
    vid Microsoft.Web.Administration.ServerManager.get_SitesSection()
    vid Microsoft.Web.Administration.ServerManager.get_Sites()
    vid Microsoft.Azure.Plugins.Plugin.DiagnosticsPluginManager.SaveIISDirectoryState()
+<<<<<<< HEAD
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:26:48] Starting DiagnosticsPlugin
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:26:48] Emulator config file set to C:\Users\lirid\source\repos\LightAnalysis\csx\Debug\roles\Backend\approot\diagnostics.wadcfgx
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:26:48] DiagnosticsStoreRootPath set to: C:\Users\lirid\AppData\Local\dftmp\Resources\ea29c79c-6f3e-45c2-ba2c-8ab26d8b5da7
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:26:48] Loading config file: C:\Users\lirid\source\repos\LightAnalysis\csx\Debug\roles\Backend\approot\diagnostics.wadcfgx
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:26:48] Config file to read: C:\Users\lirid\source\repos\LightAnalysis\csx\Debug\roles\Backend\approot\diagnostics.wadcfgx
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:26:48] Checking VM Type
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:26:48] Emulator config file set to C:\Users\lirid\source\repos\LightAnalysis\csx\Debug\roles\Backend\approot\diagnostics.wadcfgx
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:26:48] Extension set to Emulator Mode
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:26:48] Reading XML configuration file
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:26:48] Bypassing private config decryption
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:26:48] WadCfg is provided in initial configuration. Using that to initialize Diagnostics.
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:26:48] <PublicConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
+=======
 DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:25:22] Starting DiagnosticsPlugin
 DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:25:22] Emulator config file set to C:\Users\Oskar\LightAnalysis\csx\Debug\roles\Backend\approot\diagnostics.wadcfgx
 DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:25:22] DiagnosticsStoreRootPath set to: C:\Users\Oskar\AppData\Local\dftmp\Resources\2ad55bac-f6af-4503-9900-aebf46a440af
@@ -25,6 +45,7 @@ DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:25:22] Reading XML configu
 DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:25:22] Bypassing private config decryption
 DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:25:22] WadCfg is provided in initial configuration. Using that to initialize Diagnostics.
 DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:25:22] <PublicConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
+>>>>>>> 82670aeca625ffbb9727c05e93f9657c70a1de9e
   <WadCfg>
     <DiagnosticMonitorConfiguration overallQuotaInMB="4096">
       <DiagnosticInfrastructureLogs scheduledTransferLogLevelFilter="Error" />
@@ -56,6 +77,15 @@ DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:25:22] <PublicConfig xmlns
   </WadCfg>
   <StorageAccount>devstoreaccount1</StorageAccount>
 </PublicConfig>
+<<<<<<< HEAD
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:26:48] Private setting is loaded
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:26:48] Is config json/xml loaded
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:26:48] Checking if configuration needs to be fetched from the storage account and doing so if needed.
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:26:49] Successfully created checkpoint file C:\Users\lirid\AppData\Local\dftmp\Resources\ea29c79c-6f3e-45c2-ba2c-8ab26d8b5da7\WAD0105\Configuration\Checkpoint.txt
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:26:49] Will use local resource directory C:\Users\lirid\AppData\Local\dftmp\Resources\ea29c79c-6f3e-45c2-ba2c-8ab26d8b5da7\WAD0105
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:26:49] Will use endpoint https://core.windows.net for storage.
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:26:50] Exception in creating the ServerManager; is IIS installed?
+=======
 DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:25:22] Private setting is loaded
 DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:25:22] Is config json/xml loaded
 DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:25:22] Checking if configuration needs to be fetched from the storage account and doing so if needed.
@@ -63,6 +93,7 @@ DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:25:22] Successfully create
 DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:25:22] Will use local resource directory C:\Users\Oskar\AppData\Local\dftmp\Resources\2ad55bac-f6af-4503-9900-aebf46a440af\WAD0105
 DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:25:22] Will use endpoint https://core.windows.net for storage.
 DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:25:23] Exception in creating the ServerManager; is IIS installed?
+>>>>>>> 82670aeca625ffbb9727c05e93f9657c70a1de9e
  Error:System.Runtime.InteropServices.COMException (0x80040154): Hämtningen av COM-klassfabriken för komponenten med CLSID {2B72133B-3F5B-4602-8952-803546CE3344} misslyckades på grund av följande fel: 80040154 Klassen har inte registrerats (Undantag från HRESULT: 0x80040154 (REGDB_E_CLASSNOTREG)).
    vid System.Runtime.Remoting.RemotingServices.AllocateUninitializedObject(RuntimeType objectType)
    vid System.Runtime.Remoting.Activation.ActivationServices.CreateInstance(RuntimeType serverType)
@@ -76,10 +107,24 @@ DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:25:23] Exception in creati
    vid Microsoft.Web.Administration.ServerManager.get_SitesSection()
    vid Microsoft.Web.Administration.ServerManager.get_Sites()
    vid Microsoft.Azure.Plugins.Plugin.WadConfigProcessor.AddDirectories(EventsType mdsEvents, Directories wadDirectories)
+<<<<<<< HEAD
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:26:50] Running in emulator mode, crash dumps not enabled
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:26:50] Checking to see if Application Insights extension needs to be configured.
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:26:50] In emulator mode and using devstore updating XStoreAccount info, command line args: -LocalPath "C:\Users\lirid\AppData\Local\dftmp\Resources\ea29c79c-6f3e-45c2-ba2c-8ab26d8b5da7\WAD0105"  -ConfigFile "C:\Users\lirid\AppData\Local\dftmp\Resources\ea29c79c-6f3e-45c2-ba2c-8ab26d8b5da7\WAD0105\Configuration\MaConfig.xml" -ShutDownEvent WADDM-ShutDown-85faeff43bc54d40846443f99191f1a0  -TotalShutDownEvent WADDM-TotalShutDown-85faeff43bc54d40846443f99191f1a0 -InitializedEvent WADM-StartUp-85faeff43bc54d40846443f99191f1a0 -parent 12660 -events -wadVer1v5 -UseProxyServer -XStoreAccounts WadAccount#true#devstoreaccount1#Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==#http://127.0.0.1:10002#http://127.0.0.1:10001#http://127.0.0.1:10000
+DiagnosticsPlugin.exe Error: 0 : [2020-05-30 14:27:20] Microsoft.Cis.Monitoring.Query.QueryException: ErrorFail
+   vid Microsoft.Cis.Monitoring.Query.QueryLocalTable..ctor(String TableName, String TablePath)
+   vid ApplicationInsightsExtension.MATableReader.ReadTableRecords(String tableName, String tablePath, DateTime startTime, DateTime endTime)
+   vid Microsoft.Azure.Plugins.Diagnostics.dll.MAStatusWriter.UpdateStatusReport(Object sender, ElapsedEventArgs e)
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:27:50] MonAgentHost.exe started
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:27:50] DiagnoticsPlugin started.
+DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:27:50] DiagnoticsPlugin now waiting on events "DiagnosticPlugin-ShutdownEvent", "DiagnosticPlugin-TotalShutdownEvent" or "DiagnosticPlugin-RestartEvent".
+DiagnosticsPlugin.exe Error: 0 : [2020-05-30 14:27:50] Microsoft.Cis.Monitoring.Query.QueryException: ErrorFail
+=======
 DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:25:23] Running in emulator mode, crash dumps not enabled
 DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:25:23] Checking to see if Application Insights extension needs to be configured.
 DiagnosticsPlugin.exe Information: 0 : [2020-05-30 14:25:23] In emulator mode and using devstore updating XStoreAccount info, command line args: -LocalPath "C:\Users\Oskar\AppData\Local\dftmp\Resources\2ad55bac-f6af-4503-9900-aebf46a440af\WAD0105"  -ConfigFile "C:\Users\Oskar\AppData\Local\dftmp\Resources\2ad55bac-f6af-4503-9900-aebf46a440af\WAD0105\Configuration\MaConfig.xml" -ShutDownEvent WADDM-ShutDown-d758ab7eab2e4301928b4784e64a6519  -TotalShutDownEvent WADDM-TotalShutDown-d758ab7eab2e4301928b4784e64a6519 -InitializedEvent WADM-StartUp-d758ab7eab2e4301928b4784e64a6519 -parent 14896 -events -wadVer1v5 -UseProxyServer -XStoreAccounts WadAccount#true#devstoreaccount1#Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==#http://127.0.0.1:10002#http://127.0.0.1:10001#http://127.0.0.1:10000
 DiagnosticsPlugin.exe Error: 0 : [2020-05-30 14:25:53] Microsoft.Cis.Monitoring.Query.QueryException: ErrorFail
+>>>>>>> 82670aeca625ffbb9727c05e93f9657c70a1de9e
    vid Microsoft.Cis.Monitoring.Query.QueryLocalTable..ctor(String TableName, String TablePath)
    vid ApplicationInsightsExtension.MATableReader.ReadTableRecords(String tableName, String tablePath, DateTime startTime, DateTime endTime)
    vid Microsoft.Azure.Plugins.Diagnostics.dll.MAStatusWriter.UpdateStatusReport(Object sender, ElapsedEventArgs e)

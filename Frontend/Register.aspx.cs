@@ -3,7 +3,9 @@ using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Queue;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Text.Json;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -50,16 +52,26 @@ namespace Frontend
 
                 String AccountName = Email.Text;
                 String Passwordz = Password.Text;
-
+                Guid guid = Guid.NewGuid();
+                string str = guid.ToString();
 
                 RegisterUser registerUser = new RegisterUser();
+                registerUser.method = "register";
+                registerUser.id = str;
                 registerUser.email = AccountName;
-                registerUser.pw = Passwordz;
+                registerUser.password = Passwordz;
 
 
-                //outMessage = new CloudQueueMessage();
+                string jsonString;
+                jsonString = JsonSerializer.Serialize(registerUser);
+                Debug.WriteLine("DEBUG jsonString: " + jsonString);
 
+
+                outMessage = new CloudQueueMessage(jsonString);
                 outqueue.AddMessage(outMessage);
+
+
+
 
                 Response.Redirect("Default.aspx", false);
             }

@@ -7,9 +7,15 @@ namespace Frontend
 {
     public class LoginFrontend
     {
+
+
+        public String method { get; set; }
+        public String id { get; set; }
+        public String email { get; set; }
+        public String password { get; set; }
+
     
 
-        public String email { get; set; }
-        public String pw { get; set; }
+       
     }
 }
