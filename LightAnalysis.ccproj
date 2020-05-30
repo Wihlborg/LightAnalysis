@@ -53,14 +53,24 @@
       <RoleName>Frontend</RoleName>
       <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
+    <ProjectReference Include="UserAuthentication\UserAuthentication.csproj">
+      <Name>UserAuthentication</Name>
+      <Project>{0417221b-89d8-4434-bf3b-fa80fb37c26a}</Project>
+      <Private>True</Private>
+      <RoleType>Worker</RoleType>
+      <RoleName>UserAuthentication</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BackendContent\" />
     <Folder Include="FrontendContent\" />
+    <Folder Include="UserAuthenticationContent" />
   </ItemGroup>
   <ItemGroup>
     <DiagnosticsConfiguration Include="BackendContent\diagnostics.wadcfgx" />
     <DiagnosticsConfiguration Include="FrontendContent\diagnostics.wadcfgx" />
+    <DiagnosticsConfiguration Include="UserAuthenticationContent\diagnostics.wadcfgx" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>
