@@ -67,31 +67,26 @@ namespace Frontend
 
         protected void OnclickLogin(object sender, EventArgs e)
         {
-            initQueue();
+            
 
             if (accountNamez.Text!=null && passwordz.Text!=null)
             {
                 string accountName = accountNamez.Text;
                 string password = passwordz.Text;
-
                 //Class object for Json String
                 LoginFrontend loginFrontend = new LoginFrontend();
-
                 Guid guid = Guid.NewGuid();
                 string str = guid.ToString();
-
                 loginFrontend.method = "login";
                 loginFrontend.id =str;
                 loginFrontend.email = accountName;
                 loginFrontend.password = password;
-
-               
                 string jsonString;
                 jsonString = JsonSerializer.Serialize(loginFrontend);
                 Debug.WriteLine("DEBUG jsonString: " + jsonString);
 
-                                                 
 
+                
 
                 outMessage = new CloudQueueMessage(jsonString);
                 outqueue.AddMessage(outMessage);

@@ -1,9 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LightAnalysis" generation="1" functional="0" release="0" Id="fdceacc4-4a7d-4306-b287-5571831ce2d8" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
-=======
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LightAnalysis" generation="1" functional="0" release="0" Id="b2dcbf85-21bc-404e-a289-a87da61186ee" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
->>>>>>> 82670aeca625ffbb9727c05e93f9657c70a1de9e
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LightAnalysis" generation="1" functional="0" release="0" Id="316bb35f-9f1e-4d9b-819a-886781bb6f6a" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="LightAnalysisGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -154,15 +150,9 @@
     </group>
   </groups>
   <implements>
-<<<<<<< HEAD
-    <implementation Id="bfebb24c-6406-4835-862c-89336dee7ff3" ref="Microsoft.RedDog.Contract\ServiceContract\LightAnalysisContract@ServiceDefinition">
+    <implementation Id="a420019c-e970-4a3b-b051-14e45405b514" ref="Microsoft.RedDog.Contract\ServiceContract\LightAnalysisContract@ServiceDefinition">
       <interfacereferences>
-        <interfaceReference Id="9d1ad7cb-f76a-4472-91c5-591e5b6c1a64" ref="Microsoft.RedDog.Contract\Interface\Frontend:Endpoint1@ServiceDefinition">
-=======
-    <implementation Id="be4818b2-6ba3-48dd-bd59-d3211836926e" ref="Microsoft.RedDog.Contract\ServiceContract\LightAnalysisContract@ServiceDefinition">
-      <interfacereferences>
-        <interfaceReference Id="32288d29-df09-40fe-8b27-0bd288dabc55" ref="Microsoft.RedDog.Contract\Interface\Frontend:Endpoint1@ServiceDefinition">
->>>>>>> 82670aeca625ffbb9727c05e93f9657c70a1de9e
+        <interfaceReference Id="39aaf369-0f64-4602-bc12-635a46ab57e5" ref="Microsoft.RedDog.Contract\Interface\Frontend:Endpoint1@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/LightAnalysis/LightAnalysisGroup/Frontend:Endpoint1" />
           </inPort>
