@@ -54,19 +54,22 @@ namespace Frontend
                 String Passwordz = Password.Text;
                 Guid guid = Guid.NewGuid();
                 string str = guid.ToString();
-                RegisterUser registerUser = new RegisterUser();
-                registerUser.method = "register";
-                registerUser.id = str;
+                Account registerUser = new Account();
+                UserRequest request = new UserRequest();
                 registerUser.email = AccountName;
-                registerUser.password = Passwordz;
+                registerUser.pw = Passwordz;
+                registerUser.isAdmin = false;
+                request.method = UserRequest.REGISTER;
+                request.id = str;
+                request.account = registerUser;
                 string jsonString;
-                jsonString = JsonSerializer.Serialize(registerUser);
+                jsonString = JsonSerializer.Serialize(request);
                 Debug.WriteLine("DEBUG jsonString: " + jsonString);
                 outMessage = new CloudQueueMessage(jsonString);
                 outqueue.AddMessage(outMessage);
 
                 
-
+               
 
                 Response.Redirect("Default.aspx", false);
             }

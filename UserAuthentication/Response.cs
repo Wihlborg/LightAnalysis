@@ -8,7 +8,9 @@ namespace UserAuthentication
 {
     class Response
     {
-        string id;
-        string token;
+        public string sessionId { get; set; }
+        public bool success { get; set; }
+
+        public string token { get; set; }
     }
 }

@@ -8,8 +8,9 @@ namespace UserAuthentication
 {     
     class Account
     {
+        [MongoDB.Bson.Serialization.Attributes.BsonId]
         public string email { get; set; }
         public string pw { get; set; }
-        public string isAdmin { get; set; }
+        public bool isAdmin { get; set; }
     }
 }

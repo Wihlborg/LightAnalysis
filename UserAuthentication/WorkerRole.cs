@@ -33,7 +33,9 @@ namespace UserAuthentication
         
         private readonly MongoClient client = new Dal().client;
 
-        private int[] currentUsers;
+        private List<string> currentUsers = new List<string>();
+
+        
 
         public override void Run()
         {
@@ -113,33 +115,106 @@ namespace UserAuthentication
                 {
                     try
                     {
+                        Debug.Print("Worker received: " + inMessage.AsString);
                         Request request = JsonSerializer.Deserialize<Request>(inMessage.AsString);
+                        var collection = client.GetDatabase("lightanalysis").GetCollection<Account>("account");
+                        Response response;
+                        string jsonResponse;
 
                         switch (request.method)
                         {
                             case Request.LOGIN:
-                                var collection = client.GetDatabase("lightanalysis").GetCollection<Account>("account");
+                                
+                                var loginFilter = Builders<Account>.Filter.Eq("email", request.account.email);
+                                var loginResult = collection.Find(loginFilter).ToList();
 
-                                var filter = Builders<Account>.Filter.Eq("email", request.account.email);
-                                var result = collection.Find(filter).ToList();
+                                response = new Response();
+                                response.sessionId = request.id;
 
-                                if (result.ElementAt(0).pw == request.account.pw)
+                                if (loginResult.ElementAt(0).pw == request.account.pw)
                                 {
 
+                                    response.success = true;
+                                    response.token = request.id;
+                                    currentUsers.Add(request.id);
+                                }
+                                else
+                                {
+                                    response.success = false;
+                                    response.token = "";
+                                }
+                                jsonResponse = JsonSerializer.Serialize<Response>(response);
+                                
+
+                                break;
+
+                            case Request.REGISTER:
+                                var registerFilter = Builders<Account>.Filter.Eq("email", request.account.email);
+                                var registerResult = collection.Find(registerFilter).ToList();
+
+                                response = new Response();
+                                response.sessionId = request.id;
+                                response.token = "";
+
+                                if (registerResult.Count == 0)
+                                {
+                                    collection.InsertOne(request.account);
+                                    response.success = true;
+                                }
+                                else
+                                {
+                                    response.success = false;
                                 }
 
-                                break;
-                            case Request.REGISTER:
+                                jsonResponse = JsonSerializer.Serialize<Response>(response);
+                                
 
                                 break;
+
                             case Request.CHECKIN:
+                                response = new Response();
+                                response.success = false;
 
+                                for (int i = 0; i < currentUsers.Count; i++)
+                                {
+                                    if (currentUsers.ElementAt(i).Equals(request.id))
+                                    {
+                                        response.success = true;
+                                    }
+                                }
+
+                                jsonResponse = JsonSerializer.Serialize<Response>(response);
+                               
+
+                                break;
+
+                            case Request.LOGOUT:
+                                response = new Response();
+                                response.success = false;
+
+                                for (int i = 0; i < currentUsers.Count; i++)
+                                {
+                                    if (currentUsers.ElementAt(i).Equals(request.id))
+                                    {
+                                        currentUsers.RemoveAt(i);
+                                        response.success = true;
+                                    }
+                                }
+
+                                jsonResponse = JsonSerializer.Serialize<Response>(response);
+                                
+                                break;
+                            default:
+                                jsonResponse = "ERROR: no valid method was chosen";
                                 break;
                         }
+                        inqueue.DeleteMessage(inMessage);
+                        Debug.Print("response:" + jsonResponse);
+                        outMessage = new CloudQueueMessage(jsonResponse);
                     }
                     catch (Exception ex)
                     {
-                        Debug.Print("error in login request");
+                        Debug.Print("error in switch");
                         Debug.Print(ex.StackTrace);
                     }
 
@@ -148,6 +223,23 @@ namespace UserAuthentication
                 //Trace.TraceInformation("Working");
                 await Task.Delay(1000);
             }
+        }
+
+        private string generateId(int nrOfChars)
+        {
+            char[] chars = {
+                'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+                'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+                '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'
+            };
+            Random rnd = new Random();
+            string id = "";
+            for (int i = 0; i < nrOfChars; i++)
+            {
+                id += chars[rnd.Next(0, chars.Length)];
+            }
+
+            return id;
         }
     }
 }
