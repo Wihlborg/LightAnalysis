@@ -11,6 +11,6 @@ namespace UserAuthentication
         public string sessionId { get; set; }
         public bool success { get; set; }
 
-        public string token { get; set; }
+        public string msg { get; set; }
     }
 }

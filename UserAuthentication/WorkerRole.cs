@@ -130,18 +130,25 @@ namespace UserAuthentication
 
                                 response = new Response();
                                 response.sessionId = request.id;
-
-                                if (loginResult.ElementAt(0).pw == request.account.pw)
+                                if (loginResult.Count > 0)
                                 {
+                                    if (loginResult.ElementAt(0).pw == request.account.pw)
+                                    {
 
-                                    response.success = true;
-                                    response.token = request.id;
-                                    currentUsers.Add(request.id);
+                                        response.success = true;
+                                        response.msg = "succesfull login";
+                                        currentUsers.Add(request.id);
+                                    }
+                                    else
+                                    {
+                                        response.success = false;
+                                        response.msg = "wrong pw";
+                                    }
                                 }
                                 else
                                 {
                                     response.success = false;
-                                    response.token = "";
+                                    response.msg = "email does not exist";
                                 }
                                 jsonResponse = JsonSerializer.Serialize<Response>(response);
                                 
@@ -154,16 +161,18 @@ namespace UserAuthentication
 
                                 response = new Response();
                                 response.sessionId = request.id;
-                                response.token = "";
+                                
 
                                 if (registerResult.Count == 0)
                                 {
                                     collection.InsertOne(request.account);
                                     response.success = true;
+                                    response.msg = "account added to db";
                                 }
                                 else
                                 {
                                     response.success = false;
+                                    response.msg = "Email allready exists";
                                 }
 
                                 jsonResponse = JsonSerializer.Serialize<Response>(response);
