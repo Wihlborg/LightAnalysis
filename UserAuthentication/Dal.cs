@@ -14,7 +14,7 @@ namespace UserAuthentication
         private string password = "TSsI4KkOZ4SJHpvT4UR3Vz2ytAzHbENPOZYbuABCNUoDToltFejnBckMlvIR83rhZCJRfkYHUQXTaWqq3SNrlQ==";
         private string userName = "ralle";
 
-        static public string dbName = "lab3";
+        static public string dbName = "lightanalysis";
         public MongoClient client;
         public Dal()
         {

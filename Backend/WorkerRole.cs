@@ -9,6 +9,12 @@ using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Diagnostics;
 using Microsoft.WindowsAzure.ServiceRuntime;
 using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Queue;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using MongoDB.Driver;
+
 
 namespace Backend
 {
@@ -18,6 +24,16 @@ namespace Backend
         private readonly CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         private readonly ManualResetEvent runCompleteEvent = new ManualResetEvent(false);
 
+        private string accountName = "rallestorage";
+        private string accountKey = "OLPmb7rXZfl2e+z2xM46/auXeesW9b11JdbRBLzdGzBJnpRglUAHhFpMJAr/PG48AAZHyGfHWTyS9N/P2MSx2g==";
+
+        private StorageCredentials creds;
+        private CloudStorageAccount storageAccount;
+        private CloudQueueClient queueClient;
+        private CloudQueue inqueue, outqueue;
+        private CloudQueueMessage inMessage, outMessage;
+
+        private readonly MongoClient client = new Dal().client;
         public override void Run()
         {
             Trace.TraceInformation("Backend is running");
@@ -59,8 +75,33 @@ namespace Backend
             Trace.TraceInformation("Backend has stopped");
         }
 
+        private void InitQueues()
+        {
+            creds = new StorageCredentials(accountName, accountKey);
+            storageAccount = new CloudStorageAccount(creds, useHttps: true);
+
+            // Create the queue client
+            queueClient = storageAccount.CreateCloudQueueClient();
+
+            // Retrieve a reference to a queue
+            inqueue = queueClient.GetQueueReference("imagerequestqueue");
+
+            // Create the queue if it doesn't already exist
+            inqueue.CreateIfNotExists();
+
+            // Retrieve a reference to a queue
+            outqueue = queueClient.GetQueueReference("imageresponsequeue");
+
+            // Create the queue if it doesn't already exist
+            outqueue.CreateIfNotExists();
+
+            outqueue.Clear();
+            inqueue.Clear();
+        }
+
         private async Task RunAsync(CancellationToken cancellationToken)
         {
+            InitQueues();
             // TODO: Replace the following with your own logic.
             while (!cancellationToken.IsCancellationRequested)
             {

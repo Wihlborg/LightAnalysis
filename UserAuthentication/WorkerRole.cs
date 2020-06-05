@@ -33,7 +33,7 @@ namespace UserAuthentication
         
         private readonly MongoClient client = new Dal().client;
 
-        private List<string> currentUsers = new List<string>();
+        private List<loggedInUsers> currentUsers = new List<loggedInUsers>();
 
         
 
@@ -117,7 +117,7 @@ namespace UserAuthentication
                     {
                         Debug.Print("Worker received: " + inMessage.AsString);
                         Request request = JsonSerializer.Deserialize<Request>(inMessage.AsString);
-                        var collection = client.GetDatabase("lightanalysis").GetCollection<Account>("account");
+                        var collection = client.GetDatabase(Dal.dbName).GetCollection<Account>("account");
                         Response response;
                         string jsonResponse;
 
@@ -137,7 +137,13 @@ namespace UserAuthentication
 
                                         response.success = true;
                                         response.msg = "succesfull login";
-                                        currentUsers.Add(request.id);
+                                        loggedInUsers newUser = new loggedInUsers();
+                                        newUser.id = request.id;
+                                        DateTime foo = DateTime.UtcNow;
+                                        long unixTime = ((DateTimeOffset)foo).ToUnixTimeSeconds();
+                                        newUser.lastActivityTimeStamp = unixTime;
+                                        currentUsers.Add(newUser);
+
                                     }
                                     else
                                     {
@@ -186,14 +192,26 @@ namespace UserAuthentication
 
                                 for (int i = 0; i < currentUsers.Count; i++)
                                 {
-                                    if (currentUsers.ElementAt(i).Equals(request.id))
+                                    if (currentUsers.ElementAt(i).id.Equals(request.id))
                                     {
-                                        response.success = true;
+                                        DateTime foo = DateTime.UtcNow;
+                                        long unixTime = ((DateTimeOffset)foo).ToUnixTimeSeconds();
+                                        
+                                        if ((unixTime - currentUsers.ElementAt(i).lastActivityTimeStamp) < 60*10)
+                                        {
+                                            response.success = true;
+                                            currentUsers.ElementAt(i).lastActivityTimeStamp = unixTime;
+                                        }
+                                        else
+                                        { 
+                                            response.success = false;
+                                            currentUsers.RemoveAt(i);
+                                        }
+                                        
                                     }
                                 }
 
                                 jsonResponse = JsonSerializer.Serialize<Response>(response);
-                               
 
                                 break;
 
@@ -203,7 +221,7 @@ namespace UserAuthentication
 
                                 for (int i = 0; i < currentUsers.Count; i++)
                                 {
-                                    if (currentUsers.ElementAt(i).Equals(request.id))
+                                    if (currentUsers.ElementAt(i).id.Equals(request.id))
                                     {
                                         currentUsers.RemoveAt(i);
                                         response.success = true;
