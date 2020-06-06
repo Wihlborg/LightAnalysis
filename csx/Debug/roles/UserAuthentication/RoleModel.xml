@@ -13,11 +13,7 @@
     <Property name="Configuration" value="Debug" />
     <Property name="Platform" value="AnyCPU" />
     <Property name="RoleTargetFramework" value="v4.5.1" />
-<<<<<<< HEAD
     <Property name="OutputDir" value="C:\Users\Oskar\LightAnalysis\obj\Debug\UserAuthentication\" />
-=======
-    <Property name="OutputDir" value="C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\UserAuthentication\" />
->>>>>>> 6f0af5dcdac03d98f80a54c60b4b841f9c54a04b
     <Property name="EntryPoint" value="UserAuthentication.dll" />
     <Property name="SourceDir" value="" />
     <Property name="SitePhysicalPath" value="" />
