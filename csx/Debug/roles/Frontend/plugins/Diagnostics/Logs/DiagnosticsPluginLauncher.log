@@ -1,17 +1,19 @@
-DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:11:47] Emulator config file set to C:\Users\lirid\source\repos\LightAnalysis\csx\Debug\roles\Frontend\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:11:47] DiagnosticsStoreRootPath set to: C:\Users\lirid\AppData\Local\dftmp\Resources\7db3ee4a-7117-4545-a7cc-2ba945eb768d
-DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:11:47] Loading config file: C:\Users\lirid\source\repos\LightAnalysis\csx\Debug\roles\Frontend\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:11:47] Config file to read: C:\Users\lirid\source\repos\LightAnalysis\csx\Debug\roles\Frontend\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:11:47] Checking VM Type
-DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:11:47] Emulator config file set to C:\Users\lirid\source\repos\LightAnalysis\csx\Debug\roles\Frontend\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:11:47] Extension set to Emulator Mode
-DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:11:47] Reading XML configuration file
-DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:11:47] Bypassing private config decryption
-DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:11:47] Stopping the running plugin, if any
-DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:11:47] No DiagnosticsPlugin is running.
-DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:11:47] Killing any DiagnosticsPlugin that might remain.
-DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:11:47] Killing any MonAgentHost that might remain.
-DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:11:48] Diagnostics plugin stopped successfully
-DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:11:48] Resetting DiagnosticPlugin
-DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:12:59] DiagnosticsPlugin launched successfully with new configuration
-DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:12:59] DiagnosticPlugin exited with code 0
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:18:55] At least one other instance of the launcher is running. Will wait until they all finish
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:18:55] Service running in Emulator Mode, will not wait/kill other instances of the launcher
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:18:55] Emulator config file set to C:\Users\lirid\source\repos\LightAnalysis\csx\Debug\roles\Frontend\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:18:55] DiagnosticsStoreRootPath set to: C:\Users\lirid\AppData\Local\dftmp\Resources\dd086345-3bf2-4921-a08e-542e168b1ec0
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:18:55] Loading config file: C:\Users\lirid\source\repos\LightAnalysis\csx\Debug\roles\Frontend\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:18:55] Config file to read: C:\Users\lirid\source\repos\LightAnalysis\csx\Debug\roles\Frontend\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:18:55] Checking VM Type
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:18:55] Emulator config file set to C:\Users\lirid\source\repos\LightAnalysis\csx\Debug\roles\Frontend\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:18:55] Extension set to Emulator Mode
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:18:55] Reading XML configuration file
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:18:55] Bypassing private config decryption
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:18:55] Stopping the running plugin, if any
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:18:55] No DiagnosticsPlugin is running.
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:18:55] Killing any DiagnosticsPlugin that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:18:55] Killing any MonAgentHost that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:18:55] Diagnostics plugin stopped successfully
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:18:55] Resetting DiagnosticPlugin
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:20:06] DiagnosticsPlugin launched successfully with new configuration
+DiagnosticsPluginLauncher.exe Information: 0 : [2020-06-06 12:20:06] DiagnosticPlugin exited with code 0
