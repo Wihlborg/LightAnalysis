@@ -84,7 +84,7 @@ namespace Frontend
         {
             System.Diagnostics.Debug.WriteLine("delete!");
 
-            email = Request.QueryString["email"];
+            
             deletePicture deletePic = new deletePicture();
             deletePic.method = UserRequest.DELETE;
             deletePic.email = email;
