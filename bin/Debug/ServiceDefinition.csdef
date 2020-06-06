@@ -25,10 +25,17 @@
     </Endpoints>
     <Contents>
       <Content destination=".\">
-        <SourceDirectory path="C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\rcf\Debug\FrontendContent\" />
+<<<<<<< HEAD
+        <SourceDirectory path="C:\Users\Oskar\LightAnalysis\rcf\Debug\FrontendContent\" />
       </Content>
       <Content destination=".\">
-        <SourceDirectory path="C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\ecf\FrontendContent\" />
+        <SourceDirectory path="C:\Users\Oskar\LightAnalysis\ecf\FrontendContent\" />
+=======
+        <SourceDirectory path="C:\Users\lirid\source\repos\LightAnalysis\rcf\Debug\FrontendContent\" />
+      </Content>
+      <Content destination=".\">
+        <SourceDirectory path="C:\Users\lirid\source\repos\LightAnalysis\ecf\FrontendContent\" />
+>>>>>>> 6f0af5dcdac03d98f80a54c60b4b841f9c54a04b
       </Content>
     </Contents>
     <Imports>
@@ -41,10 +48,17 @@
     </ConfigurationSettings>
     <Contents>
       <Content destination=".\">
-        <SourceDirectory path="C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\rcf\Debug\BackendContent\" />
+<<<<<<< HEAD
+        <SourceDirectory path="C:\Users\Oskar\LightAnalysis\rcf\Debug\BackendContent\" />
       </Content>
       <Content destination=".\">
-        <SourceDirectory path="C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\ecf\BackendContent\" />
+        <SourceDirectory path="C:\Users\Oskar\LightAnalysis\ecf\BackendContent\" />
+=======
+        <SourceDirectory path="C:\Users\lirid\source\repos\LightAnalysis\rcf\Debug\BackendContent\" />
+      </Content>
+      <Content destination=".\">
+        <SourceDirectory path="C:\Users\lirid\source\repos\LightAnalysis\ecf\BackendContent\" />
+>>>>>>> 6f0af5dcdac03d98f80a54c60b4b841f9c54a04b
       </Content>
     </Contents>
     <Imports>
@@ -57,7 +71,11 @@
     </ConfigurationSettings>
     <Contents>
       <Content destination=".\">
-        <SourceDirectory path="C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\rcf\Debug\UserAuthenticationContent\" />
+<<<<<<< HEAD
+        <SourceDirectory path="C:\Users\Oskar\LightAnalysis\rcf\Debug\UserAuthenticationContent\" />
+=======
+        <SourceDirectory path="C:\Users\lirid\source\repos\LightAnalysis\rcf\Debug\UserAuthenticationContent\" />
+>>>>>>> 6f0af5dcdac03d98f80a54c60b4b841f9c54a04b
       </Content>
     </Contents>
   </WorkerRole>

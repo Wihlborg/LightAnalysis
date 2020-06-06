@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Frontend {
-    
-    
-    public partial class _Default {
-        
+namespace Frontend
+{
+
+
+    public partial class _Default
+    {
+
         /// <summary>
         /// accountNamez control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace Frontend {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox accountNamez;
-        
+
         /// <summary>
         /// passwordz control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace Frontend {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox passwordz;
-        
+
         /// <summary>
         /// LoginB control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace Frontend {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button LoginB;
-        
+
         /// <summary>
         /// LoginR control.
         /// </summary>
@@ -47,5 +49,14 @@ namespace Frontend {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button LoginR;
+
+        /// <summary>
+        /// LabelLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelLogin;
     }
 }
