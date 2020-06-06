@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Queue;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Microsoft.Ajax.Utilities;
 
 namespace Frontend
 {
@@ -88,15 +89,41 @@ namespace Frontend
                 string jsonString;
                 jsonString = JsonSerializer.Serialize(request);
                 Debug.WriteLine("DEBUG jsonString: " + jsonString);
-                                          
 
                 outMessage = new CloudQueueMessage(jsonString);
                 outqueue.AddMessage(outMessage);
 
+                //Retrieve stuff
+                Thread.Sleep(5000);
+                inMessage = inqueue.GetMessage();
+                string response = inMessage.AsString;
+                Debug.WriteLine("DEBUG jsonReturn: " + response);
+                Response responseObject = JsonSerializer.Deserialize<Response>(response);
+                // responseObject.sessionId;
+                // responseObject.success;
+                // responseObject.msg;
+
+                
+                Debug.WriteLine("DEBUG responseObject.msg: " + responseObject.msg);
+
+                outqueue.Clear();
+                inqueue.Clear();
+
+                if (responseObject.success)
+                {
+                    if (responseObject.sessionId.Equals(str)) 
+                    {
+                        Response.Redirect("UserPage.aspx?email=" + accountName, false);
+                    }
+                }
+                else
+                {
+                    LabelLogin.Text = responseObject.msg;
+                }
+
               
 
             }
-
 
         }
     }

@@ -238,6 +238,7 @@ namespace UserAuthentication
                         inqueue.DeleteMessage(inMessage);
                         Debug.Print("response:" + jsonResponse);
                         outMessage = new CloudQueueMessage(jsonResponse);
+                        outqueue.AddMessage(outMessage);
                     }
                     catch (Exception ex)
                     {

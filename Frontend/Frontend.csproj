@@ -243,6 +243,7 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegisterUser.cs" />
+    <Compile Include="Response.cs" />
     <Compile Include="UserRequest.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

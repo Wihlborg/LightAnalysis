@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text.Json;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -69,12 +70,36 @@ namespace Frontend
                 outqueue.AddMessage(outMessage);
 
 
-               
+                //Retrieve stuff
+                Thread.Sleep(5000);
+                inMessage = inqueue.GetMessage();
+                string response = inMessage.AsString;
+                Debug.WriteLine("DEBUG jsonReturn: " + response);
+                Response responseObject = JsonSerializer.Deserialize<Response>(response);
+                // responseObject.sessionId;
+                // responseObject.success;
+                // responseObject.msg;
 
 
+                Debug.WriteLine("DEBUG responseObject.msg: " + responseObject.msg);
 
+                outqueue.Clear();
+                inqueue.Clear();
 
-                Response.Redirect("Default.aspx", false);
+                if (responseObject.success)
+                {
+                    if (responseObject.sessionId.Equals(str))
+                    {
+                        Response.Redirect("Default.aspx", false);
+                    }
+                }
+                else 
+                {
+                    LabelRegister.Text = responseObject.msg;
+                }
+
+                //Response.Redirect("Default.aspx", false);
+
             }
                 
             
