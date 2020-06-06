@@ -11,6 +11,10 @@ namespace Frontend
         public const string REGISTER = "REGISTER";
         public const string CHECKIN = "CHECKIN";
         public const string LOGOUT = "LOGOUT";
+        public const string RETRIEVE = "RETRIEVE";
+        public const string RETRIEVEALL = "RETRIEVEALL";
+        public const string DELETE = "DELETE";
+
 
         public string method { get; set; }
         public string id { get; set; }

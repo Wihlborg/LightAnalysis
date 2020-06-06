@@ -67,8 +67,11 @@ namespace Frontend
                 jsonString = JsonSerializer.Serialize(request);
                 Debug.WriteLine("DEBUG jsonString: " + jsonString);
                 outMessage = new CloudQueueMessage(jsonString);
-                outqueue.AddMessage(outMessage);
-
+                if ((Email.Text != null) && (Password.Text != null))
+                {
+                    outqueue.AddMessage(outMessage);
+                }
+               
 
                 //Retrieve stuff
                 Thread.Sleep(5000);
