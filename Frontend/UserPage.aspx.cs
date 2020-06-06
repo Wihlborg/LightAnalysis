@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,8 +12,12 @@ using Microsoft.WindowsAzure.Storage.Queue;
 
 namespace Frontend
 {
+     
     public partial class UserPage : System.Web.UI.Page
     {
+        static int increment = 0;
+        string[] urls=new string[3];
+        string[] msg= new string[3];
         private String accountName = "rallestorage";
         private String accountKey = "OLPmb7rXZfl2e+z2xM46/auXeesW9b11JdbRBLzdGzBJnpRglUAHhFpMJAr/PG48AAZHyGfHWTyS9N/P2MSx2g==";
         private StorageCredentials creds;
@@ -25,9 +30,54 @@ namespace Frontend
 
             initQueue();
             //request picture for certain user
+            urls[0] = "http://mruanova.com/img/1.jpg";
+            urls[1] = "http://image10.bizrate-images.com/resize?sq=60&uid=2216744464";
+            urls[2] = "http://www.google.com/intl/en_ALL/images/logo.gif";
+            msg[0] = "hihi";
+            msg[1] = "huhu";
+            msg[2] = "haha";
+            
+
+        }
+        protected void lastP(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("bajs"+increment);
+
+            if (increment>0)
+            {
+                System.Diagnostics.Debug.WriteLine("bajsX" + increment);
+                increment--; 
+                System.Diagnostics.Debug.WriteLine("bajsZ" + increment);
+                analyze.Text = msg[increment];
+            imageAnalyze.ImageUrl = urls[increment];
+            }
+
 
 
         }
+        protected void nextP(object sender, EventArgs e)
+                    {
+            System.Diagnostics.Debug.WriteLine("bajs" + increment);
+            if (increment < urls.Length-1)
+            {
+                System.Diagnostics.Debug.WriteLine("bajs1" + increment);
+                increment++;
+                System.Diagnostics.Debug.WriteLine("bajs2" + increment);
+                analyze.Text = msg[increment];
+                imageAnalyze.ImageUrl = urls[increment];
+            }
+            else if (increment > urls.Length-1)
+            {
+                System.Diagnostics.Debug.WriteLine("bajs4" + increment);
+                increment = 0;
+                analyze.Text = msg[increment];
+                imageAnalyze.ImageUrl = urls[increment];
+            }
+           
+
+        }
+
+
         private void initQueue()
         {
             creds = new StorageCredentials(accountName, accountKey);

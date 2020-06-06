@@ -88,12 +88,12 @@ namespace Frontend
                 string jsonString;
                 jsonString = JsonSerializer.Serialize(request);
                 Debug.WriteLine("DEBUG jsonString: " + jsonString);
-
-
-                
+                                          
 
                 outMessage = new CloudQueueMessage(jsonString);
                 outqueue.AddMessage(outMessage);
+
+              
 
             }
 
