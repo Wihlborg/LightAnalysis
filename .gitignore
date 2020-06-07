@@ -1,5 +1,6 @@
 *
 !.gitignore
+!.vs/
 !Backend/
 !Frontend/
 !UserAuthentication/

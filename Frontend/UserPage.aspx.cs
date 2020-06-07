@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Text.Json;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -24,19 +26,47 @@ namespace Frontend
         private CloudStorageAccount storageAccount;
         private CloudQueueClient queueClient;
         private CloudQueue inqueue, outqueue;
+        string email=null;
         private CloudQueueMessage inMessage, outMessage;
         protected void Page_Load(object sender, EventArgs e)
         {
 
             initQueue();
-            //request picture for certain user
-            urls[0] = "http://mruanova.com/img/1.jpg";
-            urls[1] = "http://image10.bizrate-images.com/resize?sq=60&uid=2216744464";
-            urls[2] = "http://www.google.com/intl/en_ALL/images/logo.gif";
-            msg[0] = "hihi";
-            msg[1] = "huhu";
-            msg[2] = "haha";
-            
+            if (Request.QueryString["email"] != null)
+            {
+                 email = Request.QueryString["email"];
+                Guid guid = Guid.NewGuid();
+                string str = guid.ToString();
+                UserRequest request = new UserRequest();
+                request.method = UserRequest.RETRIEVE;
+                Account loginFrontend = new Account();
+                loginFrontend.email = email;
+                loginFrontend.pw = "XXXXXXXX";
+                request.id = str;
+                request.account = loginFrontend;
+                string jsonString;
+                jsonString = JsonSerializer.Serialize(request);
+                Debug.WriteLine("DEBUG jsonString: " + jsonString);
+
+                outMessage = new CloudQueueMessage(jsonString);
+                outqueue.AddMessage(outMessage);
+
+                //request picture for certain user
+                urls[0] = "http://mruanova.com/img/1.jpg";
+                urls[1] = "http://image10.bizrate-images.com/resize?sq=60&uid=2216744464";
+                urls[2] = "http://www.google.com/intl/en_ALL/images/logo.gif";
+                msg[0] = "hihi";
+                msg[1] = "huhu";
+                msg[2] = "haha";
+
+            }
+            else
+            {
+                Response.Redirect("Default.aspx", false);
+            }
+
+
+
 
         }
         protected void lastP(object sender, EventArgs e)
