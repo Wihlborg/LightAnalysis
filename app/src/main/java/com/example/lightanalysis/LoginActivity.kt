@@ -1,21 +1,19 @@
 package com.example.lightanalysis
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.widget.Button
-import com.example.lightanalysisapp.CameraActivity
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity : AppCompatActivity() {
 
+class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
         login_button.setOnClickListener {
-            //TODO Actual login check
             onLogin() }
 
         register_button.setOnClickListener {
@@ -30,16 +28,24 @@ class LoginActivity : AppCompatActivity() {
 
 
     private fun onLogin(){
-        // Using a handler to delay loading the PhotoActivity
-        Handler().postDelayed({
+        val queueUtils = QueueUtils()
 
-            // Start activity
-            startActivity(Intent(this, CameraActivity::class.java))
+        val success = queueUtils.attemptLogin(email_text.toString(), pw_text.toString())
 
-            // Close this activity
-            finish()
+        if (success) {
+            // Using a handler to delay loading the PhotoActivity
+            Handler().postDelayed({
 
-        }, 2000)
+                // Start activity
+                startActivity(Intent(this, CameraActivity::class.java))
+
+                // Close this activity
+                finish()
+
+            }, 2000)
+        } else{
+            Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show()
+        }
     }
 }
 
