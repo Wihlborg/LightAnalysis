@@ -30,6 +30,8 @@ public class QueueUtils {
     private CloudQueue inqueue, outqueue;
     private CloudQueueMessage inMessage, outMessage;
 
+    Gson gson = new Gson();
+
     public QueueUtils() {
     }
 
@@ -66,10 +68,11 @@ public class QueueUtils {
         Response response = null;
 
         request.setMethod("LOGIN");
-        request.id = UUID.randomUUID().toString();
+        String id = UUID.randomUUID().toString();
+        request.id = id;
         request.account = account;
 
-        Gson gson = new Gson();
+
         String jsonString = gson.toJson(request);
 
         outMessage = new CloudQueueMessage(jsonString);
@@ -93,5 +96,42 @@ public class QueueUtils {
         inqueue.clear();
 
         return response.isSuccess();
+    }
+
+    public boolean attemptRegistration(String email, String password) throws StorageException{
+        UserRequest request = new UserRequest();
+        Response response = null;
+        Account account = new Account();
+        account.email = email;
+        account.password = password;
+
+        String id = UUID.randomUUID().toString();
+        request.setId(id);
+        request.setAccount(account);
+        request.setMethod("REGISTER");
+
+        String jsonString = gson.toJson(request);
+
+        outMessage = new CloudQueueMessage(jsonString);
+
+        if (outqueue == null){
+            Log.d("Queue", "Outqueue is null, initializing queues");
+            initQueues();
+        }
+
+        outqueue.addMessage(outMessage);
+
+        inMessage = null;
+        while (inMessage == null) {
+            inMessage = inqueue.retrieveMessage();
+        }
+        String responseString = inMessage.getMessageContentAsString();
+        response = gson.fromJson(responseString, Response.class);
+
+        outqueue.clear();
+        inqueue.clear();
+
+        return response.isSuccess();
+
     }
 }
