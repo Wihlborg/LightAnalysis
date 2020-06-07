@@ -67,6 +67,7 @@ public class QueueUtils {
 
         request.setMethod("LOGIN");
         request.id = UUID.randomUUID().toString();
+        request.account = account;
 
         Gson gson = new Gson();
         String jsonString = gson.toJson(request);
