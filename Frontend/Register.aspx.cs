@@ -75,7 +75,20 @@ namespace Frontend
 
                 //Retrieve stuff
                 Thread.Sleep(5000);
-                inMessage = inqueue.GetMessage();
+                //Peeking messages to avoid problems
+                bool flag = true;
+                while (flag)
+                {
+                    CloudQueueMessage peekedMessage = inqueue.PeekMessage();
+                    Debug.WriteLine("DEBUG REGISTER peekedMessage: " + peekedMessage.AsString);
+
+                    if (peekedMessage.AsString.Contains(str))
+                    {
+                        inMessage = inqueue.GetMessage();
+                        flag = false;
+
+                    }
+                }
                 string response = inMessage.AsString;
                 Debug.WriteLine("DEBUG jsonReturn: " + response);
                 Response responseObject = JsonSerializer.Deserialize<Response>(response);
