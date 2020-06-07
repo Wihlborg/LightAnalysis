@@ -14,7 +14,7 @@ class RegistrationActivity : AppCompatActivity() {
         register_button.setOnClickListener {
             //TODO implement registration logic
 
-            Toast.makeText(this, "Registration made", Toast.LENGTH_SHORT)
+            Toast.makeText(this, "Registration made", Toast.LENGTH_SHORT).show()
             super.onBackPressed()
         }
     }
