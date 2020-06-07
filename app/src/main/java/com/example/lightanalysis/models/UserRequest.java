@@ -1,9 +1,9 @@
 package com.example.lightanalysis.models;
 
 public class UserRequest {
-    public String method;
-    public String id;
-    public Account account;
+    private String method;
+    private String id;
+    private Account account;
 
     public String getMethod() {
         return method;

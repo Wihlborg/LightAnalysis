@@ -1,9 +1,9 @@
 package com.example.lightanalysis.models;
 
 public class Account {
-    public String email;
-    public String password;
-    public boolean isAdmin;
+    private String email;
+    private String password;
+    private boolean isAdmin;
 
     public String getEmail() {
         return email;
