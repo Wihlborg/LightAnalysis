@@ -71,7 +71,7 @@ namespace Frontend
 
             initQueue();
 
-            if (accountNamez.Text!=null && passwordz.Text!=null)
+            if (accountNamez.Text != null && passwordz.Text != null)
             {
                 string accountName = accountNamez.Text;
                 string password = passwordz.Text;
@@ -84,7 +84,7 @@ namespace Frontend
                 loginFrontend.email = accountName;
                 loginFrontend.pw = password;
                 request.method = UserRequest.LOGIN;
-                request.id =str;
+                request.id = str;
                 request.account = loginFrontend;
                 string jsonString;
                 jsonString = JsonSerializer.Serialize(request);
@@ -92,10 +92,23 @@ namespace Frontend
 
                 outMessage = new CloudQueueMessage(jsonString);
                 outqueue.AddMessage(outMessage);
-
                 //Retrieve stuff
                 Thread.Sleep(5000);
-                inMessage = inqueue.GetMessage();
+                //Peek messages until the right id is found to avoid problems 
+                bool flag = true;
+                while (flag) 
+                {
+                    CloudQueueMessage peekedMessage = inqueue.PeekMessage();
+                    Debug.WriteLine("DEBUG LOGIN peekedMessage: " + peekedMessage.AsString);
+
+                    if (peekedMessage.AsString.Contains(str))
+                    {
+                        inMessage = inqueue.GetMessage();
+                        flag = false;
+
+                    }
+                }
+
                 string response = inMessage.AsString;
                 Debug.WriteLine("DEBUG jsonReturn: " + response);
                 Response responseObject = JsonSerializer.Deserialize<Response>(response);

@@ -24,14 +24,14 @@
     <Property name="SetConfiguration" value="Configuration=Debug" />
     <Property name="SetPlatform" value="Platform=AnyCPU" />
     <Property name="RoleTargetFramework" value="v4.5.1" />
-    <Property name="OutputDir" value="C:\Users\Oskar\LightAnalysis\obj\Debug\Frontend\" />
+    <Property name="OutputDir" value="C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\Frontend\" />
     <Property name="EntryPoint" value="Frontend.dll" />
-    <Property name="SourceDir" value="C:\Users\Oskar\LightAnalysis\Frontend\" />
-    <Property name="SitePhysicalPath" value="C:\Users\Oskar\LightAnalysis\Frontend\" />
+    <Property name="SourceDir" value="C:\Users\lirid\source\repos\LightAnalysis\Frontend\" />
+    <Property name="SitePhysicalPath" value="C:\Users\lirid\source\repos\LightAnalysis\Frontend\" />
     <Property name="TargetRuntimeVersion" value="v4.0" />
   </Properties>
   <Sites>
-    <Site name="Web" physicalDirectory="C:\Users\Oskar\LightAnalysis\Frontend\">
+    <Site name="Web" physicalDirectory="C:\Users\lirid\source\repos\LightAnalysis\Frontend\">
       <Bindings>
         <Binding name="Endpoint1" endpointName="Endpoint1" />
       </Bindings>
