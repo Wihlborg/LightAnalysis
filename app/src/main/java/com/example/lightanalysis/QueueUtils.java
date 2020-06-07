@@ -1,5 +1,8 @@
 package com.example.lightanalysis;
 
+import android.os.Debug;
+import android.util.Log;
+
 import com.example.lightanalysis.models.Account;
 import com.example.lightanalysis.models.Response;
 import com.example.lightanalysis.models.UserRequest;
@@ -28,33 +31,31 @@ public class QueueUtils {
     private CloudQueueMessage inMessage, outMessage;
 
     public QueueUtils() {
+    }
+
+    public void initQueues()
+    {
         try {
-            initQueues();
+            creds = new StorageCredentialsAccountAndKey(accountName, accountKey);
+            storageAccount = new CloudStorageAccount(creds, true);
+
+            // Create the queue client
+            queueClient = storageAccount.createCloudQueueClient();
+
+            // Retrieve a reference to a queue
+            inqueue = queueClient.getQueueReference("authresponsequeue");
+
+            // Create the queue if it doesn't already exist
+            inqueue.createIfNotExists();
+
+            // Retrieve a reference to a queue
+            outqueue = queueClient.getQueueReference("authrequestqueue");
+
+            // Create the queue if it doesn't already exist
+            outqueue.createIfNotExists();
         } catch (Exception e){
             e.printStackTrace();
         }
-
-    }
-
-    private void initQueues() throws URISyntaxException, StorageException
-    {
-        creds = new StorageCredentialsAccountAndKey(accountName, accountKey);
-        storageAccount = new CloudStorageAccount(creds, true);
-
-        // Create the queue client
-        queueClient = storageAccount.createCloudQueueClient();
-
-        // Retrieve a reference to a queue
-        inqueue = queueClient.getQueueReference("authresponsequeue");
-
-        // Create the queue if it doesn't already exist
-        inqueue.createIfNotExists();
-
-        // Retrieve a reference to a queue
-        outqueue = queueClient.getQueueReference("authrequestqueue");
-
-        // Create the queue if it doesn't already exist
-        outqueue.createIfNotExists();
     }
 
     public boolean attemptLogin(String email, String pw) throws StorageException {
@@ -71,6 +72,12 @@ public class QueueUtils {
         String jsonString = gson.toJson(request);
 
         outMessage = new CloudQueueMessage(jsonString);
+
+        if (outqueue == null){
+            Log.d("Queue", "Outqueue is null, initializing queues");
+            initQueues();
+        }
+
         outqueue.addMessage(outMessage);
 
 
