@@ -19,7 +19,7 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         </activity>
-        <activity android:name="com.example.lightanalysisapp.CameraActivity"/>
+        <activity android:name=".CameraActivity"/>
     </application>
 
 </manifest>

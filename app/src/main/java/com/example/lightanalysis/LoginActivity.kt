@@ -30,7 +30,7 @@ class LoginActivity : AppCompatActivity() {
     private fun onLogin(){
         val queueUtils = QueueUtils()
 
-        val success = queueUtils.attemptLogin(email_text.toString(), pw_text.toString())
+        val success = true //queueUtils.attemptLogin(email_text.toString(), pw_text.toString())
 
         if (success) {
             // Using a handler to delay loading the PhotoActivity
