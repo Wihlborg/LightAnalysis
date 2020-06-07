@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">LightAnalysis</string>
+    <string name="login_prompt">Log in</string>
+    <string name="registration_prompt">Register</string>
+    <string name="email_reminder">E-mail</string>
+    <string name="password_reminder">Password</string>
 </resources>
