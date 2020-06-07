@@ -1,4 +1,4 @@
-package com.example.lightanalysis
+package com.example.lightanalysisapp
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -14,28 +14,28 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.camera.core.*
+import com.example.lightanalysis.R
+import kotlinx.android.synthetic.main.activity_camera.*
 import java.util.concurrent.Executors
 
 private const val REQUEST_CODE_PERMISSIONS = 10
 private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
-private lateinit var viewFinder: TextureView
 private val executor = Executors.newSingleThreadExecutor()
 
-class MainActivity : AppCompatActivity() {
+class CameraActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(com.example.lightanalysis.R.layout.activity_camera)
 
-
-        viewFinder = findViewById(R.id.view_finder)
 
         if (allPermissionsGranted()){
-            viewFinder.post { startCamera() }
+            view_finder.post { startCamera() }
         } else{
             ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
         }
 
-        viewFinder.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
+        view_finder.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
             updateTransform()
         }
     }
@@ -43,10 +43,10 @@ class MainActivity : AppCompatActivity() {
     private fun updateTransform(){
         val matrix = Matrix()
 
-        val centerX = viewFinder.width/ 2f
-        val centerY = viewFinder.height / 2f
+        val centerX = view_finder.width/ 2f
+        val centerY = view_finder.height / 2f
 
-        val rotationDegrees = when(viewFinder.display.rotation){
+        val rotationDegrees = when(view_finder.display.rotation){
             Surface.ROTATION_0 -> 0
             Surface.ROTATION_90 -> 90
             Surface.ROTATION_180 -> 180
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
         matrix.postRotate(-rotationDegrees.toFloat(), centerX, centerY)
 
-        viewFinder.setTransform(matrix)
+        view_finder.setTransform(matrix)
     }
 
     override fun onRequestPermissionsResult(
@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         grantResults: IntArray) {
         if (requestCode == REQUEST_CODE_PERMISSIONS){
             if (allPermissionsGranted()){
-                viewFinder.post{startCamera()}
+                view_finder.post{startCamera()}
             } else{
                 Toast.makeText(this, "Permissions not granted by user", Toast.LENGTH_SHORT).show()
                 finish()
@@ -89,11 +89,11 @@ class MainActivity : AppCompatActivity() {
         val preview = Preview(previewConfig)
 
         preview.setOnPreviewOutputUpdateListener {
-            val parent = viewFinder.parent as ViewGroup
-            parent.removeView(viewFinder)
-            parent.addView(viewFinder, 0)
+            val parent = view_finder.parent as ViewGroup
+            parent.removeView(view_finder)
+            parent.addView(view_finder, 0)
 
-            viewFinder.surfaceTexture = it.surfaceTexture
+            view_finder.surfaceTexture = it.surfaceTexture
 
             updateTransform()
         }
