@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
@@ -43,8 +44,10 @@ public class LoginActivity  extends AppCompatActivity{
             return;
         }
 
-        String email = findViewById(R.id.email_text).toString();
-        String pw = findViewById(R.id.pw_text).toString();
+        TextView emailView = findViewById(R.id.email_text);
+        TextView pwView = findViewById(R.id.pw_text);
+        String email = emailView.getText().toString();
+        String pw = pwView.getText().toString();
 
         mAuthTask = new UserLoginTask(email, pw);
         mAuthTask.execute((Void) null);
