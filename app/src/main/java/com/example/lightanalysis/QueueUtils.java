@@ -92,9 +92,6 @@ public class QueueUtils {
         outqueue.clear();
         inqueue.clear();
 
-        if (response.isSuccess()){
-            return true;
-        }
-        return false;
+        return response.isSuccess();
     }
 }
