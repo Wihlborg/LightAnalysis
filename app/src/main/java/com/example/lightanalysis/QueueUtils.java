@@ -69,8 +69,8 @@ public class QueueUtils {
 
         request.setMethod("LOGIN");
         String id = UUID.randomUUID().toString();
-        request.id = id;
-        request.account = account;
+        request.setId(id);
+        request.setAccount(account);
 
 
         String jsonString = gson.toJson(request);
@@ -102,8 +102,8 @@ public class QueueUtils {
         UserRequest request = new UserRequest();
         Response response = null;
         Account account = new Account();
-        account.email = email;
-        account.password = password;
+        account.setEmail(email);
+        account.setPassword(password);
 
         String id = UUID.randomUUID().toString();
         request.setId(id);
