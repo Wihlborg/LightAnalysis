@@ -19,7 +19,7 @@ namespace Frontend
     public partial class UserPage : System.Web.UI.Page
     {
         static int increment = 0;
-        string[] urls=new string[3];
+        Image[] urls=new Image[100];
         string[] msg= new string[3];
         private String accountName = "rallestorage";
         private String accountKey = "OLPmb7rXZfl2e+z2xM46/auXeesW9b11JdbRBLzdGzBJnpRglUAHhFpMJAr/PG48AAZHyGfHWTyS9N/P2MSx2g==";
@@ -74,21 +74,19 @@ namespace Frontend
 
                 string response = inMessage.AsString;
                 Debug.WriteLine("DEBUG jsonReturn: " + response);
-                Response responseObject = JsonSerializer.Deserialize<>(response);
+                ResponeUrl responseObject = JsonSerializer.Deserialize<ResponeUrl>(response);
                 Debug.WriteLine("DEBUG responseObject.msg: " + responseObject.msg);
                 outqueue.Clear();
                 inqueue.Clear();
 
+
+
+
+
+                urls = responseObject.images;
+
+                msg = responseObject.analyzeTxt;
                 
-
-
-
-                urls[0] = "http://mruanova.com/img/1.jpg";
-                urls[1] = "http://image10.bizrate-images.com/resize?sq=60&uid=2216744464";
-                urls[2] = "http://www.google.com/intl/en_ALL/images/logo.gif";
-                msg[0] = "hihi";
-                msg[1] = "huhu";
-                msg[2] = "haha";
 
             }
             else
