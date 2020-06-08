@@ -127,7 +127,6 @@
   <ItemGroup>
     <Compile Include="Account.cs" />
     <Compile Include="Dal.cs" />
-    <Compile Include="Image.cs" />
     <Compile Include="loggedInUsers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request.cs" />
