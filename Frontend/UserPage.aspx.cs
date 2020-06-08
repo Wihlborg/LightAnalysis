@@ -19,8 +19,8 @@ namespace Frontend
     public partial class UserPage : System.Web.UI.Page
     {
         static int increment = 0;
-        Image[] urls=new Image[100];
-        string[] msg= new string[3];
+        string[] urls=new string[100];
+        string[] msg= new string[100];
         private String accountName = "rallestorage";
         private String accountKey = "OLPmb7rXZfl2e+z2xM46/auXeesW9b11JdbRBLzdGzBJnpRglUAHhFpMJAr/PG48AAZHyGfHWTyS9N/P2MSx2g==";
         private StorageCredentials creds;

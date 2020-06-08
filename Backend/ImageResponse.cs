@@ -11,7 +11,7 @@ namespace Backend
         public string sessionId { get; set; }
         public bool success { get; set; }
         public string msg { get; set; }
-        public Image[] images { get; set; }
+        public String[] images { get; set; }
         public string [] analyzeTxt { get; set; }
 
     }
