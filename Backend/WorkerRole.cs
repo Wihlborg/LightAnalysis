@@ -99,6 +99,10 @@ namespace Backend
             inqueue.Clear();
         }
 
+        private string AnalyzePicture(Image image)
+        {
+            return "";
+        }
         private async Task RunAsync(CancellationToken cancellationToken)
         {
             InitQueues();
@@ -115,7 +119,7 @@ namespace Backend
                         Debug.Print("Worker received: " + inMessage.AsString);
                         Request request = JsonSerializer.Deserialize<Request>(inMessage.AsString);
                         var collection = client.GetDatabase(Dal.dbName).GetCollection<Image>("image");
-                        ImageResponse response = new ImageResponse();
+                        Response response = new Response();
                         string jsonResponse;
                         response.sessionId = request.id;
 
@@ -131,9 +135,11 @@ namespace Backend
                                     
                                     response.success = true;
                                     List<Image> list = new List<Image>();
-                                    foreach (Image i in retrieveAllResult)
+                                    List<string> txt = new List<string>();
+                                    foreach (Image image in retrieveAllResult)
                                     {
-                                        list.Add(i);
+                                        list.Add(image);
+                                        txt.Add(AnalyzePicture(image));
                                     }
                                     response.images = list.ToArray();
                                     response.msg = "images found";
@@ -150,18 +156,31 @@ namespace Backend
 
                             case Request.DELETE:
                                 var deleteFilter = Builders<Image>.Filter.Eq("url", request.image.url);
-                                var deleteResult = collection.Find(deleteFilter).ToList();
+                                var deleteResult = collection.DeleteOne(deleteFilter);
 
-
+                                if (deleteResult.DeletedCount > 0)
+                                {
+                                    response.success = true;
+                                    response.msg = "image deleted";
+                                    
+                                }
+                                else
+                                {
+                                    response.success = false;
+                                    response.msg = "no image to delete was found";
+                                }
                                 
                                 break;
+
+                            case Request.ADD:
+
 
                             default:
                                 jsonResponse = "ERROR: no valid method was chosen";
                                 break;
                         }
 
-                        jsonResponse = JsonSerializer.Serialize<ImageResponse>(response);
+                        jsonResponse = JsonSerializer.Serialize<Response>(response);
                         inqueue.DeleteMessage(inMessage);
                         Debug.Print("response:" + jsonResponse);
                         outMessage = new CloudQueueMessage(jsonResponse);
