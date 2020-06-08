@@ -105,6 +105,76 @@ namespace Backend
             // TODO: Replace the following with your own logic.
             while (!cancellationToken.IsCancellationRequested)
             {
+                inMessage = null;
+                inMessage = inqueue.GetMessage();
+
+                if (inMessage != null)
+                {
+                    try
+                    {
+                        Debug.Print("Worker received: " + inMessage.AsString);
+                        Request request = JsonSerializer.Deserialize<Request>(inMessage.AsString);
+                        var collection = client.GetDatabase(Dal.dbName).GetCollection<Image>("image");
+                        ImageResponse response = new ImageResponse();
+                        string jsonResponse;
+                        response.sessionId = request.id;
+
+                        switch (request.method)
+                        {
+                            case Request.RETRIEVEALL:
+
+                                var retrieveAllFilter = Builders<Image>.Filter.Eq("email", request.image.email);
+                                var retrieveAllResult = collection.Find(retrieveAllFilter).ToList();
+                                
+                                if (retrieveAllResult.Count > 0)
+                                {
+                                    
+                                    response.success = true;
+                                    List<Image> list = new List<Image>();
+                                    foreach (Image i in retrieveAllResult)
+                                    {
+                                        list.Add(i);
+                                    }
+                                    response.images = list.ToArray();
+                                    response.msg = "images found";
+                                    
+                                }
+                                else
+                                {
+                                    response.success = false;
+                                    response.msg = "ERROR: no images found or email does not exist";
+                                }
+
+                               
+                                break;
+
+                            case Request.DELETE:
+                                var deleteFilter = Builders<Image>.Filter.Eq("url", request.image.url);
+                                var deleteResult = collection.Find(deleteFilter).ToList();
+
+
+                                
+                                break;
+
+                            default:
+                                jsonResponse = "ERROR: no valid method was chosen";
+                                break;
+                        }
+
+                        jsonResponse = JsonSerializer.Serialize<ImageResponse>(response);
+                        inqueue.DeleteMessage(inMessage);
+                        Debug.Print("response:" + jsonResponse);
+                        outMessage = new CloudQueueMessage(jsonResponse);
+                        outqueue.AddMessage(outMessage);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.Print("error in backend switch");
+                        Debug.Print(ex.StackTrace);
+                    }
+                
+                }
+
                 //Trace.TraceInformation("Working");
                 await Task.Delay(1000);
             }

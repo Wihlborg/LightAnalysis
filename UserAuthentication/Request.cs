@@ -14,6 +14,7 @@ namespace UserAuthentication
         public const string CHECKIN = "CHECKIN";
         public const string LOGOUT = "LOGOUT";
 
+
         public string method { get; set; }
         public string id { get; set; }
         public Account account { get; set; }

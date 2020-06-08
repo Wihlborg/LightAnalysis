@@ -118,8 +118,10 @@ namespace UserAuthentication
                         Debug.Print("Worker received: " + inMessage.AsString);
                         Request request = JsonSerializer.Deserialize<Request>(inMessage.AsString);
                         var collection = client.GetDatabase(Dal.dbName).GetCollection<Account>("account");
-                        Response response;
+                        
                         string jsonResponse;
+                        Response response = new Response();
+                        response.sessionId = request.id;
 
                         switch (request.method)
                         {
@@ -128,15 +130,18 @@ namespace UserAuthentication
                                 var loginFilter = Builders<Account>.Filter.Eq("email", request.account.email);
                                 var loginResult = collection.Find(loginFilter).ToList();
 
-                                response = new Response();
-                                response.sessionId = request.id;
+                                
                                 if (loginResult.Count > 0)
                                 {
                                     if (loginResult.ElementAt(0).pw == request.account.pw)
                                     {
 
                                         response.success = true;
-                                        response.msg = "succesfull login";
+                                        response.msg = "ADMIN:";
+                                        if (loginResult.ElementAt(0).isAdmin)
+                                            response.msg += "TRUE";
+                                        else
+                                            response.msg += "FALSE";
                                         loggedInUsers newUser = new loggedInUsers();
                                         newUser.id = request.id;
                                         DateTime foo = DateTime.UtcNow;
@@ -165,8 +170,6 @@ namespace UserAuthentication
                                 var registerFilter = Builders<Account>.Filter.Eq("email", request.account.email);
                                 var registerResult = collection.Find(registerFilter).ToList();
 
-                                response = new Response();
-                                response.sessionId = request.id;
                                 
 
                                 if (registerResult.Count == 0)
@@ -187,7 +190,6 @@ namespace UserAuthentication
                                 break;
 
                             case Request.CHECKIN:
-                                response = new Response();
                                 response.success = false;
 
                                 for (int i = 0; i < currentUsers.Count; i++)
@@ -196,18 +198,18 @@ namespace UserAuthentication
                                     {
                                         DateTime foo = DateTime.UtcNow;
                                         long unixTime = ((DateTimeOffset)foo).ToUnixTimeSeconds();
-                                        
-                                        if ((unixTime - currentUsers.ElementAt(i).lastActivityTimeStamp) < 60*10)
+
+                                        if ((unixTime - currentUsers.ElementAt(i).lastActivityTimeStamp) < 60 * 10)
                                         {
                                             response.success = true;
                                             currentUsers.ElementAt(i).lastActivityTimeStamp = unixTime;
                                         }
                                         else
-                                        { 
+                                        {
                                             response.success = false;
                                             currentUsers.RemoveAt(i);
                                         }
-                                        
+
                                     }
                                 }
 
@@ -216,9 +218,7 @@ namespace UserAuthentication
                                 break;
 
                             case Request.LOGOUT:
-                                response = new Response();
                                 response.success = false;
-
                                 for (int i = 0; i < currentUsers.Count; i++)
                                 {
                                     if (currentUsers.ElementAt(i).id.Equals(request.id))
@@ -230,10 +230,13 @@ namespace UserAuthentication
 
                                 jsonResponse = JsonSerializer.Serialize<Response>(response);
                                 
-                                break;
+                                break;  
+
                             default:
                                 jsonResponse = "ERROR: no valid method was chosen";
                                 break;
+
+                            
                         }
                         inqueue.DeleteMessage(inMessage);
                         Debug.Print("response:" + jsonResponse);
@@ -250,6 +253,30 @@ namespace UserAuthentication
                 }
                 //Trace.TraceInformation("Working");
                 await Task.Delay(1000);
+            }
+        }
+
+        private void UpdateUserActivity(string id)
+        {
+            for (int i = 0; i < currentUsers.Count; i++)
+            {
+                if (currentUsers.ElementAt(i).id.Equals(id))
+                {
+                    DateTime foo = DateTime.UtcNow;
+                    long unixTime = ((DateTimeOffset)foo).ToUnixTimeSeconds();
+
+                    if ((unixTime - currentUsers.ElementAt(i).lastActivityTimeStamp) < 60 * 10)
+                    {
+                       
+                        currentUsers.ElementAt(i).lastActivityTimeStamp = unixTime;
+                    }
+                    else
+                    {
+                        
+                        currentUsers.RemoveAt(i);
+                    }
+
+                }
             }
         }
 
