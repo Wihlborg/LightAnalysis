@@ -180,7 +180,7 @@ namespace Backend
                                 break;
                         }
 
-                        jsonResponse = JsonSerializer.Serialize<ImageResponse>(response);
+                        jsonResponse = JsonSerializer.Serialize<Response>(response);
                         inqueue.DeleteMessage(inMessage);
                         Debug.Print("response:" + jsonResponse);
                         outMessage = new CloudQueueMessage(jsonResponse);
