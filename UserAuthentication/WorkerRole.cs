@@ -135,7 +135,7 @@ namespace UserAuthentication
                                 {
                                     if (loginResult.ElementAt(0).pw == request.account.pw)
                                     {
-
+                                        
                                         response.success = true;
                                         response.msg = "ADMIN:";
                                         if (loginResult.ElementAt(0).isAdmin)
@@ -199,7 +199,7 @@ namespace UserAuthentication
                                         DateTime foo = DateTime.UtcNow;
                                         long unixTime = ((DateTimeOffset)foo).ToUnixTimeSeconds();
 
-                                        if ((unixTime - currentUsers.ElementAt(i).lastActivityTimeStamp) < 60 * 10)
+                                        if ((unixTime - currentUsers.ElementAt(i).lastActivityTimeStamp) < 60 * 30)
                                         {
                                             response.success = true;
                                             currentUsers.ElementAt(i).lastActivityTimeStamp = unixTime;
@@ -239,7 +239,7 @@ namespace UserAuthentication
                             
                         }
                         inqueue.DeleteMessage(inMessage);
-                        Debug.Print("response:" + jsonResponse);
+                        Debug.Print("userauth worker response:" + jsonResponse);
                         outMessage = new CloudQueueMessage(jsonResponse);
                         outqueue.AddMessage(outMessage);
                     }

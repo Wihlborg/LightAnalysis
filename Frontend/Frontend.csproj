@@ -224,6 +224,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="deletePicture.cs" />
+    <Compile Include="Image.cs" />
+    <Compile Include="ImageRequest.cs" />
     <Compile Include="LoginFrontend.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -244,8 +246,8 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegisterUser.cs" />
-    <Compile Include="ResponeUrl.cs" />
     <Compile Include="Response.cs" />
+    <Compile Include="ResponseUrl.cs" />
     <Compile Include="UserRequest.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

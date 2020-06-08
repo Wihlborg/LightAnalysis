@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Backend
+namespace Frontend
 {
 
-    class Request
+    class ImageRequest
     {
         public const string RETRIEVE = "RETRIEVE";
         public const string RETRIEVEALL = "RETRIEVEALL";

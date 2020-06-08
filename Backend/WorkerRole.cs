@@ -125,7 +125,7 @@ namespace Backend
 
                         switch (request.method)
                         {
-                            case Request.RETRIEVEALL:
+                            case Request.RETRIEVE:
 
                                 var retrieveAllFilter = Builders<Image>.Filter.Eq("email", request.image.email);
                                 var retrieveAllResult = collection.Find(retrieveAllFilter).ToList();
@@ -134,11 +134,11 @@ namespace Backend
                                 {
                                     
                                     response.success = true;
-                                    List<Image> list = new List<Image>();
+                                    List<string> list = new List<string>();
                                     List<string> txt = new List<string>();
                                     foreach (Image image in retrieveAllResult)
                                     {
-                                        list.Add(image);
+                                        list.Add(image.url);
                                         txt.Add(AnalyzePicture(image));
                                     }
                                     response.images = list.ToArray();
@@ -173,8 +173,21 @@ namespace Backend
                                 break;
 
                             case Request.ADD:
+                                var addFilter = Builders<Image>.Filter.Eq("url", request.image.url);
+                                var addResult = collection.Find(addFilter).ToList();
 
+                                if (addResult.Count == 0)
+                                {
+                                    response.success = true;
+                                    response.msg = "image was added";
 
+                                }
+                                else
+                                {
+                                    response.success = false;
+                                    response.msg = "url already exists";
+                                }
+                                break;
                             default:
                                 jsonResponse = "ERROR: no valid method was chosen";
                                 break;
@@ -182,7 +195,7 @@ namespace Backend
 
                         jsonResponse = JsonSerializer.Serialize<Response>(response);
                         inqueue.DeleteMessage(inMessage);
-                        Debug.Print("response:" + jsonResponse);
+                        Debug.Print("backend worker response:" + jsonResponse);
                         outMessage = new CloudQueueMessage(jsonResponse);
                         outqueue.AddMessage(outMessage);
                     }

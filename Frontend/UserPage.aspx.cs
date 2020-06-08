@@ -38,13 +38,15 @@ namespace Frontend
                  email = Request.QueryString["email"];
                 Guid guid = Guid.NewGuid();
                 string str = guid.ToString();
-                UserRequest request = new UserRequest();
-                request.method = UserRequest.RETRIEVE;
-                Account loginFrontend = new Account();
-                loginFrontend.email = email;
-                loginFrontend.pw = "XXXXXXXX";
+                //UserRequest request = new UserRequest();
+                ImageRequest request = new ImageRequest();
+                request.method = ImageRequest.RETRIEVE;
+                
+                Image emailHolder = new Image();
+                emailHolder.email = email;
+                //loginFrontend.pw = "XXXXXXXX";
                 request.id = str;
-                request.account = loginFrontend;
+                request.image = emailHolder;
                 string jsonString;
                 jsonString = JsonSerializer.Serialize(request);
                 Debug.WriteLine("DEBUG jsonString: " + jsonString);
@@ -62,13 +64,16 @@ namespace Frontend
                 while (flag)
                 {
                     CloudQueueMessage peekedMessage = inqueue.PeekMessage();
-                    Debug.WriteLine("DEBUG LOGIN peekedMessage: " + peekedMessage.AsString);
+                    if (peekedMessage != null)
+                    {                        
+                        Debug.WriteLine("DEBUG LOGIN peekedMessage: " + peekedMessage.AsString);
 
-                    if (peekedMessage.AsString.Contains(str))
-                    {
-                        inMessage = inqueue.GetMessage();
-                        flag = false;
+                        if (peekedMessage.AsString.Contains(str))
+                        {
+                            inMessage = inqueue.GetMessage();
+                            flag = false;
 
+                        }
                     }
                 }
 
