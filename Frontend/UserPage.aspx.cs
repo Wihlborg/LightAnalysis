@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text.Json;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -52,6 +53,36 @@ namespace Frontend
                 outqueue.AddMessage(outMessage);
 
                 //request picture for certain user
+
+
+
+                Thread.Sleep(5000);
+                //Peek messages until the right id is found to avoid problems 
+                bool flag = true;
+                while (flag)
+                {
+                    CloudQueueMessage peekedMessage = inqueue.PeekMessage();
+                    Debug.WriteLine("DEBUG LOGIN peekedMessage: " + peekedMessage.AsString);
+
+                    if (peekedMessage.AsString.Contains(str))
+                    {
+                        inMessage = inqueue.GetMessage();
+                        flag = false;
+
+                    }
+                }
+
+                string response = inMessage.AsString;
+                Debug.WriteLine("DEBUG jsonReturn: " + response);
+                Response responseObject = JsonSerializer.Deserialize<>(response);
+                Debug.WriteLine("DEBUG responseObject.msg: " + responseObject.msg);
+                outqueue.Clear();
+                inqueue.Clear();
+
+                
+
+
+
                 urls[0] = "http://mruanova.com/img/1.jpg";
                 urls[1] = "http://image10.bizrate-images.com/resize?sq=60&uid=2216744464";
                 urls[2] = "http://www.google.com/intl/en_ALL/images/logo.gif";
@@ -117,13 +148,13 @@ namespace Frontend
             queueClient = storageAccount.CreateCloudQueueClient();
 
             // Retrieve a reference to a queue
-            inqueue = queueClient.GetQueueReference("authresponsequeue");
+            inqueue = queueClient.GetQueueReference("imageresponsequeue");
 
             // Create the queue if it doesn't already exist
             inqueue.CreateIfNotExists();
 
             // Retrieve a reference to a queue
-            outqueue = queueClient.GetQueueReference("authrequestqueue");
+            outqueue = queueClient.GetQueueReference("imagerequestqueue");
 
             // Create the queue if it doesn't already exist
             outqueue.CreateIfNotExists();

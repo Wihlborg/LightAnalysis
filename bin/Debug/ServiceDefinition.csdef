@@ -25,10 +25,10 @@
     </Endpoints>
     <Contents>
       <Content destination=".\">
-        <SourceDirectory path="C:\Users\lirid\source\repos\LightAnalysis\rcf\Debug\FrontendContent\" />
+        <SourceDirectory path="C:\Users\Oskar\LightAnalysis\rcf\Debug\FrontendContent\" />
       </Content>
       <Content destination=".\">
-        <SourceDirectory path="C:\Users\lirid\source\repos\LightAnalysis\ecf\FrontendContent\" />
+        <SourceDirectory path="C:\Users\Oskar\LightAnalysis\ecf\FrontendContent\" />
       </Content>
     </Contents>
     <Imports>
@@ -41,10 +41,10 @@
     </ConfigurationSettings>
     <Contents>
       <Content destination=".\">
-        <SourceDirectory path="C:\Users\lirid\source\repos\LightAnalysis\rcf\Debug\BackendContent\" />
+        <SourceDirectory path="C:\Users\Oskar\LightAnalysis\rcf\Debug\BackendContent\" />
       </Content>
       <Content destination=".\">
-        <SourceDirectory path="C:\Users\lirid\source\repos\LightAnalysis\ecf\BackendContent\" />
+        <SourceDirectory path="C:\Users\Oskar\LightAnalysis\ecf\BackendContent\" />
       </Content>
     </Contents>
     <Imports>
@@ -57,7 +57,7 @@
     </ConfigurationSettings>
     <Contents>
       <Content destination=".\">
-        <SourceDirectory path="C:\Users\lirid\source\repos\LightAnalysis\rcf\Debug\UserAuthenticationContent\" />
+        <SourceDirectory path="C:\Users\Oskar\LightAnalysis\rcf\Debug\UserAuthenticationContent\" />
       </Content>
     </Contents>
   </WorkerRole>
