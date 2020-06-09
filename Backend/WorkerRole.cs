@@ -127,21 +127,22 @@ namespace Backend
                         {
                             case Request.RETRIEVE:
 
-                                var retrieveAllFilter = Builders<Image>.Filter.Eq("email", request.image.email);
-                                var retrieveAllResult = collection.Find(retrieveAllFilter).ToList();
+                                var retrieveFilter = Builders<Image>.Filter.Eq("email", request.image.email);
+                                var retrieveResult = collection.Find(retrieveFilter).ToList();
                                 
-                                if (retrieveAllResult.Count > 0)
+                                if (retrieveResult.Count > 0)
                                 {
                                     
                                     response.success = true;
                                     List<string> list = new List<string>();
                                     List<string> txt = new List<string>();
-                                    foreach (Image image in retrieveAllResult)
+                                    foreach (Image image in retrieveResult)
                                     {
                                         list.Add(image.url);
                                         txt.Add(AnalyzePicture(image));
                                     }
                                     response.images = list.ToArray();
+                                    response.analyzeTxt = txt.ToArray();
                                     response.msg = "images found";
                                     
                                 }
@@ -151,7 +152,33 @@ namespace Backend
                                     response.msg = "ERROR: no images found or email does not exist";
                                 }
 
-                               
+                                break;
+
+                            case Request.RETRIEVEALL:
+                                var retrieveAllFilter = Builders<Image>.Filter.Empty;
+                                var retrieveAllResult = collection.Find(retrieveAllFilter).ToList();
+
+                                if (retrieveAllResult.Count > 0)
+                                {
+                                    response.success = true;
+                                    List<string> list = new List<string>();
+                                    List<string> txt = new List<string>();
+                                    foreach (Image image in retrieveAllResult)
+                                    {
+                                        list.Add(image.url);
+                                        txt.Add(AnalyzePicture(image));
+                                    }
+                                    response.images = list.ToArray();
+                                    response.analyzeTxt = txt.ToArray();
+                                    response.msg = "images found";
+
+                                }
+                                else
+                                {
+                                    response.success = false;
+                                    response.msg = "ERROR: no images found";
+                                }
+                                
                                 break;
 
                             case Request.DELETE:

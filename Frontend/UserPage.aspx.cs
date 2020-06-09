@@ -106,7 +106,7 @@ namespace Frontend
         protected void lastP(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("bajs"+increment);
-
+             
             if (increment>0)
             {
                 System.Diagnostics.Debug.WriteLine("bajsX" + increment);

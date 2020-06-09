@@ -99,13 +99,16 @@ namespace Frontend
                 while (flag) 
                 {
                     CloudQueueMessage peekedMessage = inqueue.PeekMessage();
-                    Debug.WriteLine("DEBUG LOGIN peekedMessage: " + peekedMessage.AsString);
-
-                    if (peekedMessage.AsString.Contains(str))
+                    if (peekedMessage != null)
                     {
-                        inMessage = inqueue.GetMessage();
-                        flag = false;
+                        Debug.WriteLine("DEBUG LOGIN peekedMessage: " + peekedMessage.AsString);
 
+                        if (peekedMessage.AsString.Contains(str))
+                        {
+                            inMessage = inqueue.GetMessage();
+                            flag = false;
+
+                        }
                     }
                 }
 
