@@ -122,7 +122,7 @@ namespace Frontend
         protected void nextP(object sender, EventArgs e)
                     {
             System.Diagnostics.Debug.WriteLine("bajs" + increment);
-            if (increment < urls.Length-1)
+            if (increment < urls.Length - 1)
             {
                 System.Diagnostics.Debug.WriteLine("bajs1" + increment);
                 increment++;
@@ -130,7 +130,7 @@ namespace Frontend
                 analyze.Text = msg[increment];
                 imageAnalyze.ImageUrl = urls[increment];
             }
-            else if (increment > urls.Length-1)
+            else if (increment > urls.Length - 1)
             {
                 System.Diagnostics.Debug.WriteLine("bajs4" + increment);
                 increment = 0;
@@ -141,7 +141,11 @@ namespace Frontend
 
         }
 
+        protected void ExitUserPage(object sender, EventArgs e)
+        {
 
+            Response.Redirect("Default.aspx", false);
+        }
         private void initQueue()
         {
             creds = new StorageCredentials(accountName, accountKey);

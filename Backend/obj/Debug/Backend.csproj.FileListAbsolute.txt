@@ -282,3 +282,4 @@ C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\Backend\obj\Debug\Backend.cs
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\Backend\obj\Debug\Backend.csproj.CopyComplete
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\Backend\obj\Debug\Backend.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\Backend\obj\Debug\Backend.pdb
+C:\Users\lirid\source\repos\LightAnalysis\Backend\obj\Debug\Backend.csprojAssemblyReference.cache

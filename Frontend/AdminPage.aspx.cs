@@ -120,6 +120,13 @@ namespace Frontend
 
 
         }
+
+        protected void ExitAdminPage(object sender, EventArgs e) {
+
+            Response.Redirect("Default.aspx", false);
+        }
+
+
         private void initQueue()
         {
             creds = new StorageCredentials(accountName, accountKey);
