@@ -2,7 +2,7 @@ package com.example.lightanalysis.models;
 
 public class Account {
     private String email;
-    private String password;
+    private String pw;
     private boolean isAdmin;
 
     public String getEmail() {
@@ -14,11 +14,11 @@ public class Account {
     }
 
     public String getPassword() {
-        return password;
+        return pw;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.pw = password;
     }
 
     public boolean isAdmin() {
