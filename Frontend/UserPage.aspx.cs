@@ -125,6 +125,7 @@ namespace Frontend
                 analyze.Text = msg[increment];
                 imageAnalyze.ImageUrl = urls[increment];
             }
+
             else if (increment >= urls.Length - 1)
             {
                 System.Diagnostics.Debug.WriteLine("bajs4" + increment);
@@ -136,7 +137,11 @@ namespace Frontend
 
         }
 
+        protected void ExitUserPage(object sender, EventArgs e)
+        {
 
+            Response.Redirect("Default.aspx", false);
+        }
         private void initQueue()
         {
             creds = new StorageCredentials(accountName, accountKey);

@@ -36,8 +36,6 @@ namespace Frontend
         private CloudQueue inqueue, outqueue;
         private CloudQueueMessage inMessage, outMessage;
 
-
-
         private void initQueue()
         {
             creds = new StorageCredentials(accountName, accountKey);
@@ -93,7 +91,6 @@ namespace Frontend
                 outMessage = new CloudQueueMessage(jsonString);
                 outqueue.AddMessage(outMessage);
                 //Retrieve stuff
-                Thread.Sleep(5000);
                 //Peek messages until the right id is found to avoid problems 
                 bool flag = true;
                 while (flag) 
@@ -129,7 +126,15 @@ namespace Frontend
                 {
                     if (responseObject.sessionId.Equals(str)) 
                     {
-                        Response.Redirect("UserPage.aspx?email=" + accountName, false);
+                        if (responseObject.msg.Contains("ADMIN:TRUE"))
+                        {
+                            Response.Redirect("AdminPage.aspx?email=" + accountName, false);
+                        }
+                        else 
+                        {
+                            Response.Redirect("UserPage.aspx?email=" + accountName, false);
+
+                        }
                     }
                 }
                 else
