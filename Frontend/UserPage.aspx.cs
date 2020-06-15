@@ -15,33 +15,33 @@ using Microsoft.WindowsAzure.Storage.Queue;
 
 namespace Frontend
 {
-     
+
     public partial class UserPage : System.Web.UI.Page
     {
         static int increment = 0;
-        string[] urls=new string[100];
-        string[] msg= new string[100];
+        string[] urls = new string[100];
+        string[] msg = new string[100];
         private String accountName = "rallestorage";
         private String accountKey = "OLPmb7rXZfl2e+z2xM46/auXeesW9b11JdbRBLzdGzBJnpRglUAHhFpMJAr/PG48AAZHyGfHWTyS9N/P2MSx2g==";
         private StorageCredentials creds;
         private CloudStorageAccount storageAccount;
         private CloudQueueClient queueClient;
         private CloudQueue inqueue, outqueue;
-        string email=null;
+        string email = null;
         private CloudQueueMessage inMessage, outMessage;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Debug.Print("page load!!!!!!!");
             initQueue();
             if (Request.QueryString["email"] != null)
             {
-                 email = Request.QueryString["email"];
+                email = Request.QueryString["email"];
                 Guid guid = Guid.NewGuid();
                 string str = guid.ToString();
                 //UserRequest request = new UserRequest();
                 ImageRequest request = new ImageRequest();
                 request.method = ImageRequest.RETRIEVE;
-                
+
                 Image emailHolder = new Image();
                 emailHolder.email = email;
                 //loginFrontend.pw = "XXXXXXXX";
@@ -56,16 +56,13 @@ namespace Frontend
 
                 //request picture for certain user
 
-
-
-                Thread.Sleep(5000);
                 //Peek messages until the right id is found to avoid problems 
                 bool flag = true;
                 while (flag)
                 {
                     CloudQueueMessage peekedMessage = inqueue.PeekMessage();
                     if (peekedMessage != null)
-                    {                        
+                    {
                         Debug.WriteLine("DEBUG LOGIN peekedMessage: " + peekedMessage.AsString);
 
                         if (peekedMessage.AsString.Contains(str))
@@ -81,9 +78,7 @@ namespace Frontend
                 Debug.WriteLine("DEBUG jsonReturn: " + response);
                 ResponeUrl responseObject = JsonSerializer.Deserialize<ResponeUrl>(response);
                 Debug.WriteLine("DEBUG responseObject.msg: " + responseObject.msg);
-                outqueue.Clear();
-                inqueue.Clear();
-
+                inqueue.DeleteMessage(inMessage);
 
 
 
@@ -91,7 +86,7 @@ namespace Frontend
                 urls = responseObject.images;
 
                 msg = responseObject.analyzeTxt;
-                
+
 
             }
             else
@@ -105,24 +100,24 @@ namespace Frontend
         }
         protected void lastP(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("bajs"+increment);
-             
-            if (increment>0)
+            System.Diagnostics.Debug.WriteLine("bajs" + increment);
+
+            if (increment > 0)
             {
                 System.Diagnostics.Debug.WriteLine("bajsX" + increment);
-                increment--; 
+                increment--;
                 System.Diagnostics.Debug.WriteLine("bajsZ" + increment);
                 analyze.Text = msg[increment];
-            imageAnalyze.ImageUrl = urls[increment];
+                imageAnalyze.ImageUrl = urls[increment];
             }
 
 
 
         }
         protected void nextP(object sender, EventArgs e)
-                    {
+        {
             System.Diagnostics.Debug.WriteLine("bajs" + increment);
-            if (increment < urls.Length-1)
+            if (increment < urls.Length - 1)
             {
                 System.Diagnostics.Debug.WriteLine("bajs1" + increment);
                 increment++;
@@ -130,14 +125,14 @@ namespace Frontend
                 analyze.Text = msg[increment];
                 imageAnalyze.ImageUrl = urls[increment];
             }
-            else if (increment > urls.Length-1)
+            else if (increment >= urls.Length - 1)
             {
                 System.Diagnostics.Debug.WriteLine("bajs4" + increment);
                 increment = 0;
                 analyze.Text = msg[increment];
                 imageAnalyze.ImageUrl = urls[increment];
             }
-           
+            
 
         }
 
