@@ -1,10 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="UserPage.aspx.cs" Inherits="Frontend.UserPage" %>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
     <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
      <div>
@@ -22,5 +17,3 @@
      </div>
 
  </asp:Content> 
-</body>
-</html>

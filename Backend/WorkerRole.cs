@@ -116,7 +116,7 @@ namespace Backend
                 {
                     try
                     {
-                        Debug.Print("Worker received: " + inMessage.AsString);
+                        Debug.Print("Back Worker received: " + inMessage.AsString);
                         Request request = JsonSerializer.Deserialize<Request>(inMessage.AsString);
                         var collection = client.GetDatabase(Dal.dbName).GetCollection<Image>("image");
                         Response response = new Response();

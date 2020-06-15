@@ -124,6 +124,7 @@ namespace Frontend
 
                 if (responseObject.success)
                 {
+                    Session["id"] = responseObject.sessionId;
                     if (responseObject.sessionId.Equals(str)) 
                     {
                         if (responseObject.msg.Contains("ADMIN:TRUE"))

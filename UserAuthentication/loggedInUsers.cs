@@ -10,5 +10,7 @@ namespace UserAuthentication
     {
         public string id { get; set; }
         public long lastActivityTimeStamp { get; set; }
+
+        public string email { get; set; }
     }
 }

@@ -116,7 +116,7 @@ namespace UserAuthentication
                     try
                     {
                         
-                        Debug.Print("Worker received: " + inMessage.AsString);
+                        Debug.Print("Auth Worker received: " + inMessage.AsString);
                         Request request = JsonSerializer.Deserialize<Request>(inMessage.AsString);
                         var collection = client.GetDatabase(Dal.dbName).GetCollection<Account>("account");
                         
@@ -143,12 +143,20 @@ namespace UserAuthentication
                                             response.msg += "TRUE";
                                         else
                                             response.msg += "FALSE";
-                                        loggedInUsers newUser = new loggedInUsers();
-                                        newUser.id = request.id;
-                                        DateTime foo = DateTime.UtcNow;
-                                        long unixTime = ((DateTimeOffset)foo).ToUnixTimeSeconds();
-                                        newUser.lastActivityTimeStamp = unixTime;
-                                        currentUsers.Add(newUser);
+
+                                        // if a user with the email does not exist
+                                        if (!currentUsers.Exists(x => x.email.Equals(request.account.email)))
+                                        {
+                                            loggedInUsers newUser = new loggedInUsers();
+                                            newUser.id = request.id;
+                                            newUser.email = request.account.email;
+                                            DateTime foo = DateTime.UtcNow;
+                                            long unixTime = ((DateTimeOffset)foo).ToUnixTimeSeconds();
+                                            newUser.lastActivityTimeStamp = unixTime;
+                                            currentUsers.Add(newUser);
+
+                                        }
+                                        Debug.Print("nr of users: " + currentUsers.Count);
 
                                     }
                                     else
@@ -219,6 +227,7 @@ namespace UserAuthentication
                                 break;
 
                             case Request.LOGOUT:
+                                Debug.Print("nr of users: " + currentUsers.Count);
                                 response.success = false;
                                 for (int i = 0; i < currentUsers.Count; i++)
                                 {
@@ -226,11 +235,14 @@ namespace UserAuthentication
                                     {
                                         currentUsers.RemoveAt(i);
                                         response.success = true;
+                                        Debug.Print("nr of users: " + currentUsers.Count);
+
                                     }
                                 }
-
+                                
                                 jsonResponse = JsonSerializer.Serialize<Response>(response);
                                 
+
                                 break;  
 
                             default:

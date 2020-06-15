@@ -23,11 +23,12 @@ namespace Frontend
         private StorageCredentials creds;
         private CloudStorageAccount storageAccount;
         private CloudQueueClient queueClient;
-        private CloudQueue inqueue, outqueue;
+        private CloudQueue inqueue, outqueue, authInqueue, authOutqueue;
         string email = null;
         private CloudQueueMessage inMessage, outMessage;
         protected void Page_Load(object sender, EventArgs e)
         {
+            Debug.Print("page load!!!!");
             initQueue();
             if (Request.QueryString["email"] != null)
             {
@@ -46,7 +47,7 @@ namespace Frontend
 
                 outMessage = new CloudQueueMessage(jsonString);
                 outqueue.AddMessage(outMessage);
-
+                /*
                 //request picture for certain user
                 urls[0] = "http://mruanova.com/img/1.jpg";
                 urls[1] = "http://image10.bizrate-images.com/resize?sq=60&uid=2216744464";
@@ -54,6 +55,37 @@ namespace Frontend
                 msg[0] = "hihi";
                 msg[1] = "huhu";
                 msg[2] = "haha";
+                */
+
+                bool flag = true;
+                while (flag)
+                {
+                    CloudQueueMessage peekedMessage = inqueue.PeekMessage();
+                    if (peekedMessage != null)
+                    {
+                        Debug.WriteLine("DEBUG adminPage peekedMessage: " + peekedMessage.AsString);
+
+                        if (peekedMessage.AsString.Contains(str))
+                        {
+                            inMessage = inqueue.GetMessage();
+                            flag = false;
+
+                        }
+                    }
+                }
+
+                string response = inMessage.AsString;
+                Debug.WriteLine("DEBUG jsonReturn: " + response);
+                ResponeUrl responseObject = JsonSerializer.Deserialize<ResponeUrl>(response);
+                Debug.WriteLine("DEBUG responseObject.msg: " + responseObject.msg);
+                inqueue.DeleteMessage(inMessage);
+
+
+
+
+                urls = responseObject.images;
+
+                msg = responseObject.analyzeTxt;
 
             }
             else
@@ -109,7 +141,7 @@ namespace Frontend
                 analyze.Text = msg[increment];
                 imageAnalyze.ImageUrl = urls[increment];
             }
-            else if (increment > urls.Length - 1)
+            else if (increment >= urls.Length - 1)
             {
                 System.Diagnostics.Debug.WriteLine("bajs4" + increment);
                 increment = 0;
@@ -120,8 +152,40 @@ namespace Frontend
 
         }
 
-        protected void ExitAdminPage(object sender, EventArgs e) {
+        protected void ExitAdminPage(object sender, EventArgs e) 
+        {
+            UserRequest request = new UserRequest();
+            request.id = (string)Session["id"];
+            request.method = UserRequest.LOGOUT;
 
+            string jsonString = JsonSerializer.Serialize(request);
+            outMessage = new CloudQueueMessage(jsonString);
+            Debug.Print("logout msg: " + jsonString);
+            authOutqueue.AddMessage(outMessage);
+
+            bool flag = true;
+            while (flag)
+            {
+                CloudQueueMessage peekedMessage = authInqueue.PeekMessage();
+                if (peekedMessage != null)
+                {
+                    Debug.WriteLine("DEBUG logout peekedMessage: " + peekedMessage.AsString);
+
+                    if (peekedMessage.AsString.Contains(request.id))
+                    {
+                        inMessage = authInqueue.GetMessage();
+                        flag = false;
+
+                    }
+                }
+            }
+
+            string response = inMessage.AsString;
+            Debug.WriteLine("DEBUG jsonReturn: " + response);
+            Response responseObject = JsonSerializer.Deserialize<Response>(response);
+            authInqueue.DeleteMessage(inMessage);
+
+            Session.Abandon();
             Response.Redirect("Default.aspx", false);
         }
 
@@ -135,16 +199,18 @@ namespace Frontend
             queueClient = storageAccount.CreateCloudQueueClient();
 
             // Retrieve a reference to a queue
-            inqueue = queueClient.GetQueueReference("authresponsequeue");
-
+            inqueue = queueClient.GetQueueReference("imageresponsequeue");
+            authInqueue = queueClient.GetQueueReference("authresponsequeue");
             // Create the queue if it doesn't already exist
             inqueue.CreateIfNotExists();
 
             // Retrieve a reference to a queue
-            outqueue = queueClient.GetQueueReference("authrequestqueue");
+            outqueue = queueClient.GetQueueReference("imagerequestqueue");
+            authOutqueue = queueClient.GetQueueReference("authrequestqueue");
 
             // Create the queue if it doesn't already exist
             outqueue.CreateIfNotExists();
+            authOutqueue.CreateIfNotExists();
         }
     }
 }
