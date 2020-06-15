@@ -34,13 +34,12 @@ namespace Frontend
                 email = Request.QueryString["email"];
                 Guid guid = Guid.NewGuid();
                 string str = guid.ToString();
-                UserRequest request = new UserRequest();
-                request.method = UserRequest.RETRIEVEALL;
-                Account loginFrontend = new Account();
-                loginFrontend.email = email;
-                loginFrontend.pw = "XXXXXXXX";
+                ImageRequest request = new ImageRequest();
+                request.method = ImageRequest.RETRIEVEALL;
+                Image emailHolder = new Image();
+                emailHolder.email = email;
                 request.id = str;
-                request.account = loginFrontend;
+                request.image = emailHolder;
                 string jsonString;
                 jsonString = JsonSerializer.Serialize(request);
                 Debug.WriteLine("DEBUG jsonString: " + jsonString);

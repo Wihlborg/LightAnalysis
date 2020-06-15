@@ -115,6 +115,7 @@ namespace UserAuthentication
                 {
                     try
                     {
+                        
                         Debug.Print("Worker received: " + inMessage.AsString);
                         Request request = JsonSerializer.Deserialize<Request>(inMessage.AsString);
                         var collection = client.GetDatabase(Dal.dbName).GetCollection<Account>("account");
