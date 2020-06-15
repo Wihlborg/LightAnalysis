@@ -24,7 +24,7 @@ class CameraActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.example.lightanalysis.R.layout.activity_camera)
+        setContentView(R.layout.activity_camera)
 
 
         if (allPermissionsGranted()){
