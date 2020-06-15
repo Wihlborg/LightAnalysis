@@ -3,6 +3,7 @@ package com.example.lightanalysis
 import android.Manifest
 import android.content.pm.PackageManager
 import android.graphics.Matrix
+import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Size
@@ -19,13 +20,13 @@ import java.util.concurrent.Executors
 private const val REQUEST_CODE_PERMISSIONS = 10
 private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
 private val executor = Executors.newSingleThreadExecutor()
+private val queueUtils = QueueUtils();
 
 class CameraActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_camera)
-
 
         if (allPermissionsGranted()){
             view_finder.post { startCamera() }
@@ -36,6 +37,8 @@ class CameraActivity : AppCompatActivity() {
         view_finder.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
             updateTransform()
         }
+
+        queueUtils.initQueues()
     }
 
     private fun updateTransform(){
@@ -105,12 +108,20 @@ class CameraActivity : AppCompatActivity() {
         findViewById<ImageButton>(R.id.capture_button).setOnClickListener {
             imageCapture.takePicture(executor, object : ImageCapture.OnImageCapturedListener() {
                 override fun onCaptureSuccess(image: ImageProxy?, rotationDegrees: Int) {
-                    //Do something with the image here
-                    image?.close()
+                    ImageUploadActivity(image!!).execute()
                 }
             })
         }
 
         CameraX.bindToLifecycle(this, preview, imageCapture)
+    }
+
+    inner class ImageUploadActivity(proxy: ImageProxy): AsyncTask<Void, Void, Void>(){
+        private val imageProxy = proxy;
+        override fun doInBackground(vararg p0: Void?): Void? {
+            queueUtils.uploadImageToStorage(imageProxy, System.currentTimeMillis().toString())
+            imageProxy.close()
+            return null
+        }
     }
 }
