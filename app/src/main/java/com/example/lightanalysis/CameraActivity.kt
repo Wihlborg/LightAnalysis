@@ -109,7 +109,9 @@ class CameraActivity : AppCompatActivity() {
         findViewById<ImageButton>(R.id.capture_button).setOnClickListener {
             imageCapture.takePicture(executor, object : ImageCapture.OnImageCapturedListener() {
                 override fun onCaptureSuccess(image: ImageProxy?, rotationDegrees: Int) {
-                    ImageUploadActivity(image!!).execute()
+                    if (image != null) {
+                        ImageUploadActivity(image).execute()
+                    }
                 }
             })
         }
