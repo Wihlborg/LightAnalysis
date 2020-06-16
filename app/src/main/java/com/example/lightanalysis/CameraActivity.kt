@@ -20,7 +20,7 @@ import java.util.concurrent.Executors
 private const val REQUEST_CODE_PERMISSIONS = 10
 private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
 private val executor = Executors.newSingleThreadExecutor()
-private val queueUtils = QueueUtils();
+private val queueUtils = QueueUtils()
 
 class CameraActivity : AppCompatActivity() {
 
@@ -120,7 +120,7 @@ class CameraActivity : AppCompatActivity() {
     }
 
     inner class ImageUploadActivity(proxy: ImageProxy): AsyncTask<Void, Void, Void>(){
-        private val imageProxy = proxy;
+        private val imageProxy = proxy
         override fun doInBackground(vararg p0: Void?): Void? {
             queueUtils.uploadImageToStorage(imageProxy, System.currentTimeMillis().toString())
             imageProxy.close()
