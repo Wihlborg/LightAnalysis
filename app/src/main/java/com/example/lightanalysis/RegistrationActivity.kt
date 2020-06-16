@@ -44,7 +44,9 @@ class RegistrationActivity : AppCompatActivity() {
 
         override fun onPostExecute(result: Boolean?) {
 
-            if (result!!){
+            val success = result ?: false
+
+            if (success){
                 Toast.makeText(applicationContext,  "Registration successful", Toast.LENGTH_LONG).show()
             } else{
                 Toast.makeText(applicationContext,  "Registration failed", Toast.LENGTH_LONG).show()
