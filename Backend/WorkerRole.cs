@@ -101,7 +101,13 @@ namespace Backend
 
         private string AnalyzePicture(Image image)
         {
-            return "";
+            string txt = "";
+            txt += "url: "+image.url;
+            txt += Environment.NewLine + "email: " + image.email;
+            txt += Environment.NewLine + "longitude: " + image.longitude;
+            txt += Environment.NewLine + "latitude: " + image.latitude;
+            Debug.Print("analyzeTxt:\n" + txt);
+            return txt;
         }
         private async Task RunAsync(CancellationToken cancellationToken)
         {
