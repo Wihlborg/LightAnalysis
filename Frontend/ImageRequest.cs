@@ -14,6 +14,13 @@ namespace Frontend
         public const string DELETE = "DELETE";
         public const string ADD = "ADD";
 
+        public ImageRequest()
+        {
+            method = "";
+            id = "";
+            image = new Image();
+        }
+
         public string method { get; set; }
         public string id { get; set; }
         public Image image { get; set; }

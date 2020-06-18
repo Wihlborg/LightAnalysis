@@ -26,6 +26,7 @@ namespace Frontend
         private CloudQueue inqueue, outqueue, authInqueue, authOutqueue;
         string email = null;
         private CloudQueueMessage inMessage, outMessage;
+        string sessionId;
         protected void Page_Load(object sender, EventArgs e)
         {
             Debug.Print("page load!!!!");
@@ -33,13 +34,12 @@ namespace Frontend
             if (Request.QueryString["email"] != null)
             {
                 email = Request.QueryString["email"];
-                Guid guid = Guid.NewGuid();
-                string str = guid.ToString();
+                sessionId = (string)Session["id"];
                 ImageRequest request = new ImageRequest();
                 request.method = ImageRequest.RETRIEVEALL;
                 Image emailHolder = new Image();
                 emailHolder.email = email;
-                request.id = str;
+                request.id = sessionId;
                 request.image = emailHolder;
                 string jsonString;
                 jsonString = JsonSerializer.Serialize(request);
@@ -65,7 +65,7 @@ namespace Frontend
                     {
                         Debug.WriteLine("DEBUG adminPage peekedMessage: " + peekedMessage.AsString);
 
-                        if (peekedMessage.AsString.Contains(str))
+                        if (peekedMessage.AsString.Contains(sessionId))
                         {
                             inMessage = inqueue.GetMessage();
                             flag = false;
@@ -86,7 +86,8 @@ namespace Frontend
                 urls = responseObject.images;
 
                 msg = responseObject.analyzeTxt;
-
+                analyze.Text = msg[increment];
+                imageAnalyze.ImageUrl = urls[increment];
             }
             else
             {
@@ -107,20 +108,19 @@ namespace Frontend
                 imageAnalyze.ImageUrl = urls[increment];
             }
 
-
-
         }
+
+        
 
         protected void deleteP(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("delete!");
 
+            ImageRequest deletePic = new ImageRequest();
+            deletePic.method = ImageRequest.DELETE;
+            deletePic.id = sessionId;
+            deletePic.image.url = urls[increment];
             
-            deletePicture deletePic = new deletePicture();
-            deletePic.method = UserRequest.DELETE;
-            deletePic.email = email;
-            deletePic.url = urls[increment];
-            deletePic.textAnalyze = msg[increment];
             string jsonString;
             jsonString = JsonSerializer.Serialize(deletePic);
             Debug.WriteLine("DEBUG jsonString: " + jsonString);
@@ -128,8 +128,37 @@ namespace Frontend
             outMessage = new CloudQueueMessage(jsonString);
             outqueue.AddMessage(outMessage);
 
+            bool flag = true;
+            while (flag)
+            {
+                CloudQueueMessage peekedMessage = inqueue.PeekMessage();
+                if (peekedMessage != null)
+                {
+                    Debug.WriteLine("DEBUG logout peekedMessage: " + peekedMessage.AsString);
+
+                    if (peekedMessage.AsString.Contains(deletePic.id))
+                    {
+                        inMessage = inqueue.GetMessage();
+                        flag = false;
+
+                    }
+                }
+            }
+
+            string response = inMessage.AsString;
+            Debug.WriteLine("DEBUG jsonReturn: " + response);
+            Response responseObject = JsonSerializer.Deserialize<Response>(response);
+            inqueue.DeleteMessage(inMessage);
+
+            if (responseObject.success)
+            {
+                increment--;
+                analyze.Text = msg[increment];
+                imageAnalyze.ImageUrl = urls[increment];
+            }
 
         }
+
         protected void nextP(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("bajs" + increment);

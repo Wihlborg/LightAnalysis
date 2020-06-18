@@ -36,8 +36,7 @@ namespace Frontend
             if (Request.QueryString["email"] != null)
             {
                 email = Request.QueryString["email"];
-                Guid guid = Guid.NewGuid();
-                string str = guid.ToString();
+                string str = (string)Session["id"];
                 //UserRequest request = new UserRequest();
                 ImageRequest request = new ImageRequest();
                 request.method = ImageRequest.RETRIEVE;
@@ -80,13 +79,11 @@ namespace Frontend
                 Debug.WriteLine("DEBUG responseObject.msg: " + responseObject.msg);
                 inqueue.DeleteMessage(inMessage);
 
-
-
-
                 urls = responseObject.images;
 
                 msg = responseObject.analyzeTxt;
-
+                analyze.Text = msg[increment];
+                imageAnalyze.ImageUrl = urls[increment];
 
             }
             else

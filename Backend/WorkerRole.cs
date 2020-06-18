@@ -205,9 +205,9 @@ namespace Backend
 
                                 if (addResult.Count == 0)
                                 {
+                                    collection.InsertOne(request.image);
                                     response.success = true;
                                     response.msg = "image was added";
-
                                 }
                                 else
                                 {
