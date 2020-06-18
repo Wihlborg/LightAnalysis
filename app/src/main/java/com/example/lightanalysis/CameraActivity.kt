@@ -101,7 +101,8 @@ class CameraActivity : AppCompatActivity() {
 
         val imageCaptureConfig = ImageCaptureConfig.Builder().apply {
             setCaptureMode(ImageCapture.CaptureMode.MAX_QUALITY)
-            setTargetRotation(windowManager.defaultDisplay.rotation)
+            setTargetRotation(Surface.ROTATION_270)
+            setTargetResolution(Size(1080, 1920))
         }.build()
 
         val imageCapture = ImageCapture(imageCaptureConfig)
