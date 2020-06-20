@@ -1,0 +1,71 @@
+/*
+ * Comments are written as C++ style. 
+ */
+
+@import 'https://fonts.googleapis.com/css?family=Raleway';
+
+div{
+    font-family: Raleway; 
+    
+  }
+
+h1 {
+    color: #C5C6C7;
+}
+
+h2 {
+    color: #C5C6C7;
+}
+
+a {
+    color: #C5C6C7;
+}
+
+p {
+    color: #C5C6C7;
+}
+
+.image {
+    width: 15%;
+    height: 15%;
+}
+
+body{
+    margin:0;
+}
+
+.textbox {
+    border-radius: 8px;
+
+}
+
+.label {
+    color: #C5C6C7;
+}
+
+.textlabel {
+    color: #C5C6C7;
+    text-align: left;
+}
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    min-height: 100vh;
+    border-radius: 0px;
+    background-color: #0b0c10;
+    border-color: #0b0c10;
+}
+
+.button {
+    background-color: #0b0c10;
+    transition-duration: 0.4s;
+    color:white;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 8px;
+    width: 180px;
+    height: auto;
+}
