@@ -283,3 +283,8 @@ C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\Backend\obj\Debug\Backend.cs
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\Backend\obj\Debug\Backend.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\Backend\obj\Debug\Backend.pdb
 C:\Users\lirid\source\repos\LightAnalysis\Backend\obj\Debug\Backend.csprojAssemblyReference.cache
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\Backend\bin\Debug\Microsoft.Azure.CognitiveServices.Vision.ComputerVision.dll
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\Backend\bin\Debug\Microsoft.Rest.ClientRuntime.Azure.dll
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\Backend\bin\Debug\Microsoft.Rest.ClientRuntime.dll
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\Backend\bin\Debug\Microsoft.Rest.ClientRuntime.xml
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\Backend\bin\Debug\Microsoft.Rest.ClientRuntime.Azure.xml

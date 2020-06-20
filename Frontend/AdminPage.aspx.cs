@@ -80,9 +80,6 @@ namespace Frontend
                 Debug.WriteLine("DEBUG responseObject.msg: " + responseObject.msg);
                 inqueue.DeleteMessage(inMessage);
 
-
-
-
                 urls = responseObject.images;
 
                 msg = responseObject.analyzeTxt;

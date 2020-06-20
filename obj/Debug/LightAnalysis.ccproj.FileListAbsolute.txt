@@ -1084,3 +1084,6 @@ C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\zh-Hant\Microsoft.Data.OData.resources.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\zh-Hant\Microsoft.Data.Services.Client.resources.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\zh-Hant\System.Spatial.resources.dll
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\Microsoft.Azure.CognitiveServices.Vision.ComputerVision.dll
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\Microsoft.Rest.ClientRuntime.Azure.dll
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\Microsoft.Rest.ClientRuntime.dll

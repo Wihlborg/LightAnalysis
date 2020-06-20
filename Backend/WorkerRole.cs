@@ -14,7 +14,10 @@ using Microsoft.WindowsAzure.Storage.Queue;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using MongoDB.Driver;
+using System.Drawing;
 
+using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
+using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 
 namespace Backend
 {
@@ -24,6 +27,7 @@ namespace Backend
         private readonly CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         private readonly ManualResetEvent runCompleteEvent = new ManualResetEvent(false);
 
+        // azure queues
         private string accountName = "rallestorage";
         private string accountKey = "OLPmb7rXZfl2e+z2xM46/auXeesW9b11JdbRBLzdGzBJnpRglUAHhFpMJAr/PG48AAZHyGfHWTyS9N/P2MSx2g==";
 
@@ -33,7 +37,25 @@ namespace Backend
         private CloudQueue inqueue, outqueue;
         private CloudQueueMessage inMessage, outMessage;
 
+        // azure cosmos
         private readonly MongoClient client = new Dal().client;
+
+        // computer vision
+        // subscriptionKey = "0123456789abcdef0123456789ABCDEF"  
+        private const string subscriptionKey = "c75235e7bc0e4ac69a273e4c4c4c4193";
+        ComputerVisionClient computerVision;
+
+
+        // Specify the features to return  
+        private static readonly List<VisualFeatureTypes> features =
+            new List<VisualFeatureTypes>()
+        {
+            VisualFeatureTypes.Categories, VisualFeatureTypes.Description,
+            VisualFeatureTypes.Faces, VisualFeatureTypes.ImageType,
+            VisualFeatureTypes.Tags
+        };
+
+
         public override void Run()
         {
             Trace.TraceInformation("Backend is running");
@@ -99,18 +121,126 @@ namespace Backend
             inqueue.Clear();
         }
 
-        private string AnalyzePicture(Image image)
+        private void InitComputerVision()
+        {
+            computerVision = new ComputerVisionClient(
+                new ApiKeyServiceClientCredentials(subscriptionKey),
+                new System.Net.Http.DelegatingHandler[] { });
+
+            // You must use the same region as you used to get your subscription  
+            // keys. For example, if you got your subscription keys from westus,  
+            // replace "westcentralus" with "westus".  
+            //  
+            // Free trial subscription keys are generated in the "westus"  
+            // region. If you use a free trial subscription key, you shouldn't  
+            // need to change the region.  
+
+            // Specify the Azure region  
+            computerVision.Endpoint = "https://ralleimageanalysis.cognitiveservices.azure.com/";
+
+        }
+
+        // Display the most relevant caption for the image  
+
+
+        // Analyze a remote image  
+        private static async Task AnalyzeRemoteAsync(ComputerVisionClient computerVision, string imageUrl)
+        {
+            tempStr = "";
+            if (!Uri.IsWellFormedUriString(imageUrl, UriKind.Absolute))
+            {
+                Debug.Print(
+                    "\nInvalid remoteImageUrl:\n{0} \n", imageUrl);
+                return;
+            }
+
+            Debug.Print("started computervision analysis!!!!");
+
+            ImageAnalysis analysis =
+                await computerVision.AnalyzeImageAsync(imageUrl, features);
+
+            if (analysis.Description.Captions.Count != 0)
+            {
+                Debug.Print("computerVision:\n");
+                Debug.Print(analysis.Description.Captions[0].Text + "\n");
+                tempStr = analysis.Description.Captions[0].Text + "\n";
+            }
+            else
+            {
+                tempStr = "No description generated.";
+            }
+        }
+
+        static string tempStr;
+
+        private string GetText(Image image)
         {
             string txt = "";
-            txt += "url: "+image.url;
+            txt += "url: " + image.url;
             txt += Environment.NewLine + "email: " + image.email;
             txt += Environment.NewLine + "longitude: " + image.longitude;
             txt += Environment.NewLine + "latitude: " + image.latitude;
-            Debug.Print("analyzeTxt:\n" + txt);
+            txt += Environment.NewLine + "caption: " + image.caption;
+            txt += Environment.NewLine + "Width: " + image.width;
+            txt += Environment.NewLine + "Height: " + image.height;
+            txt += Environment.NewLine + "avg brightness: " + image.avgBrightness;
+            txt += Environment.NewLine + "avg red: " + image.avgRed;
+            txt += Environment.NewLine + "avg green: " + image.avgGreen;
+            txt += Environment.NewLine + "avg blue: " + image.avgBlue;
+
+            Debug.Print(txt);
             return txt;
+        }
+        private Image AnalyzePicture(Image image) 
+        { 
+            // get the bitmap from a url
+            System.Net.WebRequest request =
+            System.Net.WebRequest.Create(image.url);
+            System.Net.WebResponse response = request.GetResponse();
+            System.IO.Stream responseStream =
+                response.GetResponseStream();
+            Bitmap img = new Bitmap(responseStream);
+            
+            int alphaTotal = 0;
+            int redTotal = 0;
+            int greenTotal = 0;
+            int blueTotal = 0;
+            int nrOfPixels = 0;
+            Stopwatch stopwatch = new Stopwatch();
+
+            stopwatch.Start();
+            for (int i = 0; i < img.Width; i++)
+            {
+                for (int j = 0; j < img.Height; j++)
+                {
+                    Color pixel = img.GetPixel(i, j);
+                    alphaTotal += pixel.A;
+                    redTotal += pixel.R;
+                    greenTotal += pixel.G;
+                    blueTotal += pixel.B;
+                    nrOfPixels++;
+                }
+            }
+            stopwatch.Stop();
+
+            image.width = img.Width;
+            image.height = img.Height;
+            image.avgBrightness = (alphaTotal / nrOfPixels);
+            image.avgRed = (redTotal / nrOfPixels);
+            image.avgGreen = (greenTotal / nrOfPixels);
+            image.avgBlue = (blueTotal / nrOfPixels);
+            
+            TimeSpan ts = stopwatch.Elapsed;
+
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+            ts.Hours, ts.Minutes, ts.Seconds,
+            ts.Milliseconds / 10);
+            Debug.Print("RunTime " + elapsedTime);
+            return image;
         }
         private async Task RunAsync(CancellationToken cancellationToken)
         {
+            InitComputerVision();
             InitQueues();
             // TODO: Replace the following with your own logic.
             while (!cancellationToken.IsCancellationRequested)
@@ -135,22 +265,22 @@ namespace Backend
 
                                 var retrieveFilter = Builders<Image>.Filter.Eq("email", request.image.email);
                                 var retrieveResult = collection.Find(retrieveFilter).ToList();
-                                
+
                                 if (retrieveResult.Count > 0)
                                 {
-                                    
+
                                     response.success = true;
                                     List<string> list = new List<string>();
                                     List<string> txt = new List<string>();
                                     foreach (Image image in retrieveResult)
                                     {
                                         list.Add(image.url);
-                                        txt.Add(AnalyzePicture(image));
+                                        txt.Add(GetText(image));
                                     }
                                     response.images = list.ToArray();
                                     response.analyzeTxt = txt.ToArray();
                                     response.msg = "images found";
-                                    
+
                                 }
                                 else
                                 {
@@ -169,10 +299,12 @@ namespace Backend
                                     response.success = true;
                                     List<string> list = new List<string>();
                                     List<string> txt = new List<string>();
+                                    Debug.Print("amount of pictures: " + retrieveAllResult.Count);
+
                                     foreach (Image image in retrieveAllResult)
                                     {
                                         list.Add(image.url);
-                                        txt.Add(AnalyzePicture(image));
+                                        txt.Add(GetText(image));
                                     }
                                     response.images = list.ToArray();
                                     response.analyzeTxt = txt.ToArray();
@@ -184,7 +316,7 @@ namespace Backend
                                     response.success = false;
                                     response.msg = "ERROR: no images found";
                                 }
-                                
+
                                 break;
 
                             case Request.DELETE:
@@ -195,14 +327,14 @@ namespace Backend
                                 {
                                     response.success = true;
                                     response.msg = "image deleted";
-                                    
+
                                 }
                                 else
                                 {
                                     response.success = false;
                                     response.msg = "no image to delete was found";
                                 }
-                                
+
                                 break;
 
                             case Request.ADD:
@@ -211,6 +343,11 @@ namespace Backend
 
                                 if (addResult.Count == 0)
                                 {
+                                    var t1 = AnalyzeRemoteAsync(computerVision, request.image.url);
+                                    t1.Wait(5000);
+                                    //Task.WhenAll(t1).Wait(5000);
+                                    request.image = AnalyzePicture(request.image);
+                                    request.image.caption = tempStr;
                                     collection.InsertOne(request.image);
                                     response.success = true;
                                     response.msg = "image was added";
@@ -237,7 +374,7 @@ namespace Backend
                         Debug.Print("error in backend switch");
                         Debug.Print(ex.StackTrace);
                     }
-                
+
                 }
 
                 //Trace.TraceInformation("Working");
