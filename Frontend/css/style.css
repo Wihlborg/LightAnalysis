@@ -5,7 +5,8 @@
 @import 'https://fonts.googleapis.com/css?family=Raleway';
 
 div{
-    font-family: Raleway;  
+    font-family: Raleway; 
+    
   }
 
 h1 {
@@ -24,27 +25,47 @@ p {
     color: #C5C6C7;
 }
 
-#mydiv {
-    position: absolute;
-    margin: 0 auto;
-    top: 0;
-    left: 0;
-    text-align: center;
-    background-color: #234099;
-    border-radius: 5px;
-    color: #ffffff;
+.image {
+    width: 15%;
+    height: 15%;
 }
 
-.center {
-    margin: auto;
-    width: 25%;
-    padding: 5px;
-    text-align: center;
-  }
+body{
+    margin:0;
+}
 
-  button{
+.textbox {
+    border-radius: 8px;
+
+}
+
+.label {
+    color: #C5C6C7;
+}
+
+.textlabel {
+    color: #C5C6C7;
+    text-align: left;
+}
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    min-height: 100vh;
+    border-radius: 0px;
+    background-color: #0b0c10;
+    border-color: #0b0c10;
+}
+
+.button {
     background-color: #0b0c10;
     transition-duration: 0.4s;
     color:white;
     font-size: 18px;
-  }
+    text-align: center;
+    border-radius: 8px;
+    width: auto;
+    height: auto;
+}

@@ -10,6 +10,7 @@ using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 
 namespace Frontend
 {
@@ -50,7 +51,7 @@ namespace Frontend
 
             if (Email.Text!=null && Password.Text!=null)
             {
-
+                
                 String AccountName = Email.Text;
                 String Passwordz = Password.Text;
                 Guid guid = Guid.NewGuid();
@@ -74,7 +75,6 @@ namespace Frontend
                
 
                 //Retrieve stuff
-                Thread.Sleep(5000);
                 //Peeking messages to avoid problems
                 bool flag = true;
                 while (flag)
