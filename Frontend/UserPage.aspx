@@ -16,7 +16,7 @@
             <br />
             <asp:TextBox ID="analyze" runat="server" TextMode="MultiLine"></asp:TextBox>
             <br />
-            <asp:Button CssClass="button" ID="lastPicture" runat="server" OnClick="lastP" Height="51px" Text="Last Picture!" />
+            <asp:Button CssClass="button" ID="lastPicture" runat="server" OnClick="lastP" Text="Last Picture!" />
             <br />
             <asp:Button CssClass="button" ID="nextPicture" runat="server" OnClick="nextP" Text="Next Picture!" />
             <br />
