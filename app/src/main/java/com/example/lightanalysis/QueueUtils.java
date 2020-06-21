@@ -178,12 +178,15 @@ public class QueueUtils {
 
     }
 
-    public boolean addMetadata(String url, double lat, double lon){
-        Image image = new com.example.lightanalysis.models.Image(url, "hwihlborg94@gmail.com", lat, lon);
+    public void addMetadata(String url, double lat, double lon){
         String json = "";
         try {
             json = new JSONObject().put("method", "add")
-                                   .put("image", image).toString();
+                                   .put("image",
+                                           new JSONObject().put("url", url)
+                                                            .put("email", "hwihlborg94@gmail.com")
+                                                            .put("latitude", lat)
+                                                            .put("longitude", lon)).toString();
 
             outMessage = new CloudQueueMessage(json);
 
@@ -191,7 +194,5 @@ public class QueueUtils {
         } catch (JSONException | StorageException e){
             e.printStackTrace();
         }
-
-        return false;
     }
 }
