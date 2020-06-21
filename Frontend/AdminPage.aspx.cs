@@ -16,8 +16,8 @@ namespace Frontend
     public partial class AdminPage : System.Web.UI.Page
     {
         static int increment = 0;
-        string[] urls = new string[3];
-        string[] msg = new string[3];
+        string[] urls = new string[100];
+        string[] msg = new string[100];
         private String accountName = "rallestorage";
         private String accountKey = "OLPmb7rXZfl2e+z2xM46/auXeesW9b11JdbRBLzdGzBJnpRglUAHhFpMJAr/PG48AAZHyGfHWTyS9N/P2MSx2g==";
         private StorageCredentials creds;
@@ -83,8 +83,11 @@ namespace Frontend
                 urls = responseObject.images;
 
                 msg = responseObject.analyzeTxt;
-                analyze.Text = msg[increment];
-                imageAnalyze.ImageUrl = urls[increment];
+                if (urls != null && msg != null)
+                {
+                    analyze.Text = msg[increment];
+                    imageAnalyze.ImageUrl = urls[increment];
+                }
             }
             else
             {
@@ -101,13 +104,17 @@ namespace Frontend
                 System.Diagnostics.Debug.WriteLine("bajsX" + increment);
                 increment--;
                 System.Diagnostics.Debug.WriteLine("bajsZ" + increment);
-                analyze.Text = msg[increment];
-                imageAnalyze.ImageUrl = urls[increment];
+                if (urls != null && msg != null)
+                {
+                    analyze.Text = msg[increment];
+                    imageAnalyze.ImageUrl = urls[increment];
+                }
+
             }
 
         }
 
-        
+
 
         protected void deleteP(object sender, EventArgs e)
         {
@@ -117,7 +124,7 @@ namespace Frontend
             deletePic.method = ImageRequest.DELETE;
             deletePic.id = sessionId;
             deletePic.image.url = urls[increment];
-            
+
             string jsonString;
             jsonString = JsonSerializer.Serialize(deletePic);
             Debug.WriteLine("DEBUG jsonString: " + jsonString);
@@ -150,8 +157,12 @@ namespace Frontend
             if (responseObject.success)
             {
                 increment--;
-                analyze.Text = msg[increment];
-                imageAnalyze.ImageUrl = urls[increment];
+                if (urls != null && msg != null)
+                {
+                    analyze.Text = msg[increment];
+                    imageAnalyze.ImageUrl = urls[increment];
+                }
+
             }
 
         }
@@ -164,21 +175,29 @@ namespace Frontend
                 System.Diagnostics.Debug.WriteLine("bajs1" + increment);
                 increment++;
                 System.Diagnostics.Debug.WriteLine("bajs2" + increment);
-                analyze.Text = msg[increment];
-                imageAnalyze.ImageUrl = urls[increment];
+                if (urls != null && msg != null)
+                {
+                    analyze.Text = msg[increment];
+                    imageAnalyze.ImageUrl = urls[increment];
+                }
+
             }
             else if (increment >= urls.Length - 1)
             {
                 System.Diagnostics.Debug.WriteLine("bajs4" + increment);
                 increment = 0;
-                analyze.Text = msg[increment];
-                imageAnalyze.ImageUrl = urls[increment];
+                if (urls != null && msg != null)
+                {
+                    analyze.Text = msg[increment];
+                    imageAnalyze.ImageUrl = urls[increment];
+                }
+
             }
 
 
         }
 
-        protected void ExitAdminPage(object sender, EventArgs e) 
+        protected void ExitAdminPage(object sender, EventArgs e)
         {
             UserRequest request = new UserRequest();
             request.id = (string)Session["id"];

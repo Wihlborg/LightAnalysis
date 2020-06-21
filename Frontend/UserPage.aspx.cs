@@ -79,12 +79,19 @@ namespace Frontend
                 Debug.WriteLine("DEBUG responseObject.msg: " + responseObject.msg);
                 inqueue.DeleteMessage(inMessage);
 
-                urls = responseObject.images;
+                if (responseObject.images != null && responseObject.analyzeTxt != null)
+                {
+                    urls = responseObject.images;
+                    msg = responseObject.analyzeTxt;
+                }
 
-                msg = responseObject.analyzeTxt;
+                if (urls != null && msg != null)
+                {
+                    analyze.Text = msg[increment];
+                    imageAnalyze.ImageUrl = urls[increment];
 
-                analyze.Text = msg[increment];
-                imageAnalyze.ImageUrl = urls[increment];
+                }
+
 
             }
             else
@@ -105,8 +112,12 @@ namespace Frontend
                 System.Diagnostics.Debug.WriteLine("bajsX" + increment);
                 increment--;
                 System.Diagnostics.Debug.WriteLine("bajsZ" + increment);
-                analyze.Text = msg[increment];
-                imageAnalyze.ImageUrl = urls[increment];
+                if (urls != null && msg != null)
+                {
+                    analyze.Text = msg[increment];
+                    imageAnalyze.ImageUrl = urls[increment];
+
+                }
             }
 
 
@@ -120,18 +131,26 @@ namespace Frontend
                 System.Diagnostics.Debug.WriteLine("bajs1" + increment);
                 increment++;
                 System.Diagnostics.Debug.WriteLine("bajs2" + increment);
-                analyze.Text = msg[increment];
-                imageAnalyze.ImageUrl = urls[increment];
+                if (urls != null && msg != null)
+                {
+                    analyze.Text = msg[increment];
+                    imageAnalyze.ImageUrl = urls[increment];
+
+                }
             }
 
             else if (increment >= urls.Length - 1)
             {
                 System.Diagnostics.Debug.WriteLine("bajs4" + increment);
                 increment = 0;
-                analyze.Text = msg[increment];
-                imageAnalyze.ImageUrl = urls[increment];
+                if (urls != null && msg != null)
+                {
+                    analyze.Text = msg[increment];
+                    imageAnalyze.ImageUrl = urls[increment];
+
+                }
             }
-            
+
 
         }
 
