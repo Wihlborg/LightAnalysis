@@ -12,15 +12,15 @@
     <div class="center" runat="server">
 
         <form id="admin" runat="server">
+           
+
+            <asp:Button CssClass="button" ID="lastPicture" runat="server" OnClick="lastP" Text="Last Picture!" />
+            <asp:Button CssClass="button" ID="nextPicture" runat="server" OnClick="nextP" Text="Next Picture!" />
+            <asp:Button CssClass="button" ID="delete" runat="server" OnClick="deleteP" Text="Delete Picture!" />
+            <br />
             <asp:Image ID="imageAnalyze" runat="server" Height="350px" Width="1297px" />
             <br />
             <asp:TextBox ID="analyze" runat="server" TextMode="MultiLine"></asp:TextBox>
-            <br />
-            <asp:Button CssClass="button" ID="lastPicture" runat="server" OnClick="lastP" Text="Last Picture!" />
-            <br />
-            <asp:Button CssClass="button" ID="nextPicture" runat="server" OnClick="nextP" Text="Next Picture!" />
-            <br />
-            <asp:Button CssClass="button" ID="delete" runat="server" OnClick="deleteP" Text="Delete Picture!" />
             <br />
             <asp:Button CssClass="button" ID="exitAdmin" runat="server" Text="Logout" OnClick="ExitAdminPage" />
 

@@ -24,24 +24,6 @@ namespace Frontend
         protected global::System.Web.UI.HtmlControls.HtmlForm admin;
 
         /// <summary>
-        /// imageAnalyze control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imageAnalyze;
-
-        /// <summary>
-        /// analyze control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox analyze;
-
-        /// <summary>
         /// lastPicture control.
         /// </summary>
         /// <remarks>
@@ -58,6 +40,24 @@ namespace Frontend
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button nextPicture;
+
+        /// <summary>
+        /// imageAnalyze control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imageAnalyze;
+
+        /// <summary>
+        /// analyze control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox analyze;
 
         /// <summary>
         /// userLogout control.
