@@ -10,7 +10,8 @@
 
     <link rel="stylesheet" href="css/style.css" type="text/css"/>
     <div class="center" runat="server">
-
+        
+        <img class="image" src="css/logo.png" />
         <form id="forgot" runat="server">
              <a>Enter email: </a>
             <br />

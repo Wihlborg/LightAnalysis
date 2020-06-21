@@ -267,7 +267,7 @@ namespace UserAuthentication
                                 {
                                     if (filterResult.ElementAt(0).email == email)
                                     {
-                                        collection.UpdateOne(filterResult.ElementAt(0).pw, newPassword);
+                                        //collection.UpdateOne(filterResult.ElementAt(0).pw, newPassword);
                                         response.success = true;
                                         Mail mail = new Mail();
                                         mail.send(email, newPassword);
