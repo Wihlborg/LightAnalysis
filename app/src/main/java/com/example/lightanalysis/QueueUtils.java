@@ -2,14 +2,11 @@ package com.example.lightanalysis;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.util.Log;
 
 import androidx.camera.core.ImageProxy;
 
-import com.example.lightanalysis.models.Account;
-import com.example.lightanalysis.models.Response;
-import com.example.lightanalysis.models.UserRequest;
+import com.example.lightanalysis.models.*;
 import com.google.gson.Gson;
 import com.microsoft.azure.storage.CloudStorageAccount;
 import com.microsoft.azure.storage.StorageCredentials;
@@ -21,6 +18,9 @@ import com.microsoft.azure.storage.blob.CloudBlockBlob;
 import com.microsoft.azure.storage.queue.CloudQueue;
 import com.microsoft.azure.storage.queue.CloudQueueClient;
 import com.microsoft.azure.storage.queue.CloudQueueMessage;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -146,7 +146,7 @@ public class QueueUtils {
 
     }
 
-    public void uploadImageToStorage(ImageProxy imageProxy, String fileName) throws URISyntaxException, StorageException, IOException {
+    public void uploadImageToStorage(ImageProxy imageProxy, String fileName, double lat, double lon) throws URISyntaxException, StorageException, IOException {
         //Connect with the blob storage and create the blob where the file is created
         CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
 
@@ -155,7 +155,7 @@ public class QueueUtils {
         CloudBlockBlob blob = container.getBlockBlobReference(fileName + ".jpg");
 
         //Create a bitmap from the image
-        Image image =  imageProxy.getImage();
+        android.media.Image image =  imageProxy.getImage();
         ByteBuffer buffer = image.getPlanes()[0].getBuffer();
         byte[] bytes = new byte[buffer.remaining()];
         buffer.get(bytes);
@@ -172,6 +172,26 @@ public class QueueUtils {
         blob.upload(bis, bitmapdata.length);
         Log.d("UPLOAD", "uploadImageToStorage END");
 
+        initQueues();
+        addMetadata("https://rallestorage.blob.core.windows.net/images/ " + fileName + ".jpg", lat, lon);
 
+
+    }
+
+    public boolean addMetadata(String url, double lat, double lon){
+        Image image = new com.example.lightanalysis.models.Image(url, "hwihlborg94@gmail.com", lat, lon);
+        String json = "";
+        try {
+            json = new JSONObject().put("method", "add")
+                                   .put("image", image).toString();
+
+            outMessage = new CloudQueueMessage(json);
+
+            outqueue.addMessage(outMessage);
+        } catch (JSONException | StorageException e){
+            e.printStackTrace();
+        }
+
+        return false;
     }
 }

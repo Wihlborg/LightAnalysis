@@ -3,6 +3,7 @@ package com.example.lightanalysis
 import android.Manifest
 import android.content.pm.PackageManager
 import android.graphics.Matrix
+import android.location.Location
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,6 +15,8 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.camera.core.*
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import kotlinx.android.synthetic.main.activity_camera.*
 import java.util.concurrent.Executors
 
@@ -21,6 +24,7 @@ private const val REQUEST_CODE_PERMISSIONS = 10
 private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
 private val executor = Executors.newSingleThreadExecutor()
 private val queueUtils = QueueUtils()
+private lateinit var fusedLocationClient: FusedLocationProviderClient
 
 class CameraActivity : AppCompatActivity() {
 
@@ -38,7 +42,9 @@ class CameraActivity : AppCompatActivity() {
             updateTransform()
         }
 
-        queueUtils.initQueues()
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
+
     }
 
     private fun updateTransform(){
@@ -123,7 +129,13 @@ class CameraActivity : AppCompatActivity() {
     inner class ImageUploadActivity(proxy: ImageProxy): AsyncTask<Void, Void, Void>(){
         private val imageProxy = proxy
         override fun doInBackground(vararg p0: Void?): Void? {
-            queueUtils.uploadImageToStorage(imageProxy, System.currentTimeMillis().toString())
+            var lat = 0.0
+            var long = 0.0
+            fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+                lat = location?.latitude ?: 420.0
+                long = location?.longitude ?: 420.0
+            }
+            queueUtils.uploadImageToStorage(imageProxy, System.currentTimeMillis().toString(), lat, long)
             imageProxy.close()
             return null
         }
