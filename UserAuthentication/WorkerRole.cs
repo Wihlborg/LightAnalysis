@@ -14,6 +14,7 @@ using Microsoft.WindowsAzure.Storage.Queue;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using MongoDB.Driver;
+using Org.BouncyCastle.Ocsp;
 
 namespace UserAuthentication
 {
@@ -119,7 +120,7 @@ namespace UserAuthentication
                         Debug.Print("Auth Worker received: " + inMessage.AsString);
                         Request request = JsonSerializer.Deserialize<Request>(inMessage.AsString);
                         var collection = client.GetDatabase(Dal.dbName).GetCollection<Account>("account");
-                        
+
                         string jsonResponse;
                         Response response = new Response();
                         response.sessionId = request.id;
@@ -243,7 +244,45 @@ namespace UserAuthentication
                                 jsonResponse = JsonSerializer.Serialize<Response>(response);
                                 
 
-                                break;  
+                                break;
+
+                            case Request.FORGOT:
+
+                                var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                                var stringChars = new char[8];
+                                var random = new Random();
+
+                                for (int i = 0; i < stringChars.Length; i++)
+                                {
+                                    stringChars[i] = chars[random.Next(chars.Length)];
+                                }
+
+                                string newPassword = new String(stringChars);
+                                var email = request.account.email;
+
+                                var filter = Builders<Account>.Filter.Eq("email", request.account.email);
+                                var filterResult = collection.Find(filter).ToList();
+
+                                if (filterResult.Count > 0)
+                                {
+                                    if (filterResult.ElementAt(0).email == email)
+                                    {
+                                      //  collection.UpdateOne(filterResult.ElementAt(0).pw, newPassword);
+                                       response.success = true;
+                                        response.msg = "password updated";
+                                    }
+
+                                }
+                                else
+                                {
+                                    response.msg = "failed update password";
+                                }
+
+                                Mail mail = new Mail();
+                                mail.send(email, newPassword);
+                               
+                                jsonResponse = JsonSerializer.Serialize<Response>(response);
+                                break;
 
                             default:
                                 jsonResponse = "ERROR: no valid method was chosen";

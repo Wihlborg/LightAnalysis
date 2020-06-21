@@ -378,3 +378,11 @@ C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\UserAuthentication\obj\Debug
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\UserAuthentication\obj\Debug\UserAuthentication.csproj.CopyComplete
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\UserAuthentication\obj\Debug\UserAuthentication.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\UserAuthentication\obj\Debug\UserAuthentication.pdb
+C:\Users\lirid\source\repos\LightAnalysis\UserAuthentication\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\lirid\source\repos\LightAnalysis\UserAuthentication\bin\Debug\MailKit.dll
+C:\Users\lirid\source\repos\LightAnalysis\UserAuthentication\bin\Debug\MimeKit.dll
+C:\Users\lirid\source\repos\LightAnalysis\UserAuthentication\bin\Debug\BouncyCastle.Crypto.xml
+C:\Users\lirid\source\repos\LightAnalysis\UserAuthentication\bin\Debug\MailKit.pdb
+C:\Users\lirid\source\repos\LightAnalysis\UserAuthentication\bin\Debug\MailKit.xml
+C:\Users\lirid\source\repos\LightAnalysis\UserAuthentication\bin\Debug\MimeKit.pdb
+C:\Users\lirid\source\repos\LightAnalysis\UserAuthentication\bin\Debug\MimeKit.xml

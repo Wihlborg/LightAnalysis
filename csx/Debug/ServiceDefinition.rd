@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LightAnalysis" generation="1" functional="0" release="0" Id="2b609844-13e6-4e42-a4b7-feba8a785003" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LightAnalysis" generation="1" functional="0" release="0" Id="fa8f5b0b-571e-4de3-b1a1-4683a37d33c2" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="LightAnalysisGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -82,7 +82,7 @@
       </maps>
       <components>
         <groupHascomponents>
-          <role name="Backend" generation="1" functional="0" release="0" software="C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\csx\Debug\roles\Backend" entryPoint="base\x64\WaHostBootstrapper.exe" parameters="base\x64\WaWorkerHost.exe " memIndex="-1" hostingEnvironment="consoleroleadmin" hostingEnvironmentVersion="2">
+          <role name="Backend" generation="1" functional="0" release="0" software="C:\Users\lirid\source\repos\LightAnalysis\csx\Debug\roles\Backend" entryPoint="base\x64\WaHostBootstrapper.exe" parameters="base\x64\WaWorkerHost.exe " memIndex="-1" hostingEnvironment="consoleroleadmin" hostingEnvironmentVersion="2">
             <settings>
               <aCS name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" defaultValue="" />
               <aCS name="__ModelData" defaultValue="&lt;m role=&quot;Backend&quot; xmlns=&quot;urn:azure:m:v1&quot;&gt;&lt;r name=&quot;Backend&quot; /&gt;&lt;r name=&quot;Frontend&quot;&gt;&lt;e name=&quot;Endpoint1&quot; /&gt;&lt;/r&gt;&lt;r name=&quot;UserAuthentication&quot; /&gt;&lt;/m&gt;" />
@@ -99,7 +99,7 @@
           </sCSPolicy>
         </groupHascomponents>
         <groupHascomponents>
-          <role name="Frontend" generation="1" functional="0" release="0" software="C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\csx\Debug\roles\Frontend" entryPoint="base\x64\WaHostBootstrapper.exe" parameters="base\x64\WaIISHost.exe " memIndex="-1" hostingEnvironment="frontendadmin" hostingEnvironmentVersion="2">
+          <role name="Frontend" generation="1" functional="0" release="0" software="C:\Users\lirid\source\repos\LightAnalysis\csx\Debug\roles\Frontend" entryPoint="base\x64\WaHostBootstrapper.exe" parameters="base\x64\WaIISHost.exe " memIndex="-1" hostingEnvironment="frontendadmin" hostingEnvironmentVersion="2">
             <componentports>
               <inPort name="Endpoint1" protocol="http" portRanges="80" />
             </componentports>
@@ -119,7 +119,7 @@
           </sCSPolicy>
         </groupHascomponents>
         <groupHascomponents>
-          <role name="UserAuthentication" generation="1" functional="0" release="0" software="C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\csx\Debug\roles\UserAuthentication" entryPoint="base\x64\WaHostBootstrapper.exe" parameters="base\x64\WaWorkerHost.exe " memIndex="-1" hostingEnvironment="consoleroleadmin" hostingEnvironmentVersion="2">
+          <role name="UserAuthentication" generation="1" functional="0" release="0" software="C:\Users\lirid\source\repos\LightAnalysis\csx\Debug\roles\UserAuthentication" entryPoint="base\x64\WaHostBootstrapper.exe" parameters="base\x64\WaWorkerHost.exe " memIndex="-1" hostingEnvironment="consoleroleadmin" hostingEnvironmentVersion="2">
             <settings>
               <aCS name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" defaultValue="" />
               <aCS name="__ModelData" defaultValue="&lt;m role=&quot;UserAuthentication&quot; xmlns=&quot;urn:azure:m:v1&quot;&gt;&lt;r name=&quot;Backend&quot; /&gt;&lt;r name=&quot;Frontend&quot;&gt;&lt;e name=&quot;Endpoint1&quot; /&gt;&lt;/r&gt;&lt;r name=&quot;UserAuthentication&quot; /&gt;&lt;/m&gt;" />
@@ -150,9 +150,9 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="1b60627e-fadf-490f-bbbf-86168f076de5" ref="Microsoft.RedDog.Contract\ServiceContract\LightAnalysisContract@ServiceDefinition">
+    <implementation Id="dcf34efe-06af-4e76-9fbf-1058e070da51" ref="Microsoft.RedDog.Contract\ServiceContract\LightAnalysisContract@ServiceDefinition">
       <interfacereferences>
-        <interfaceReference Id="26fb3b47-ef3c-4645-84c3-1e7f9ef49dc4" ref="Microsoft.RedDog.Contract\Interface\Frontend:Endpoint1@ServiceDefinition">
+        <interfaceReference Id="8dfb0009-20be-4c17-8442-f6f6c8cea5c3" ref="Microsoft.RedDog.Contract\Interface\Frontend:Endpoint1@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/LightAnalysis/LightAnalysisGroup/Frontend:Endpoint1" />
           </inPort>

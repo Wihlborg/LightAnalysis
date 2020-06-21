@@ -13,6 +13,7 @@ namespace UserAuthentication
         public const string REGISTER = "REGISTER";
         public const string CHECKIN = "CHECKIN";
         public const string LOGOUT = "LOGOUT";
+        public const string FORGOT = "FORGOT";
 
 
         public string method { get; set; }

@@ -288,3 +288,8 @@ C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\Backend\bin\Debug\Microsoft.
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\Backend\bin\Debug\Microsoft.Rest.ClientRuntime.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\Backend\bin\Debug\Microsoft.Rest.ClientRuntime.xml
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\Backend\bin\Debug\Microsoft.Rest.ClientRuntime.Azure.xml
+C:\Users\lirid\source\repos\LightAnalysis\Backend\bin\Debug\Microsoft.Azure.CognitiveServices.Vision.ComputerVision.dll
+C:\Users\lirid\source\repos\LightAnalysis\Backend\bin\Debug\Microsoft.Rest.ClientRuntime.Azure.dll
+C:\Users\lirid\source\repos\LightAnalysis\Backend\bin\Debug\Microsoft.Rest.ClientRuntime.dll
+C:\Users\lirid\source\repos\LightAnalysis\Backend\bin\Debug\Microsoft.Rest.ClientRuntime.xml
+C:\Users\lirid\source\repos\LightAnalysis\Backend\bin\Debug\Microsoft.Rest.ClientRuntime.Azure.xml

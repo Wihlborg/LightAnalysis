@@ -14,6 +14,7 @@ namespace Frontend
         public const string RETRIEVE = "RETRIEVE";
         public const string RETRIEVEALL = "RETRIEVEALL";
         public const string DELETE = "DELETE";
+        public const string FORGOT = "FORGOT";
 
 
         public string method { get; set; }

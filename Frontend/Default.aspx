@@ -24,7 +24,11 @@
             <asp:Button CssClass="button" ID="LoginB" runat="server" Text="Login" OnClick="OnclickLogin" />
             <br />
             <asp:Button CssClass="button" ID="LoginR" runat="server" Text="Register" OnClick="OnclickRegister" />
+            <br />
+            <asp:linkbutton id="lblMyLink" OnClick="toForgot" runat="server">Forgot password?</asp:linkbutton>
+
         </form>
+
 
         <asp:Label CssClass="label" ID="LabelLogin" runat="server" Text=""></asp:Label>
 

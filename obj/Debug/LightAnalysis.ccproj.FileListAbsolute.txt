@@ -1087,3 +1087,11 @@ C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\Microsoft.Azure.CognitiveServices.Vision.ComputerVision.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\Microsoft.Rest.ClientRuntime.Azure.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\Microsoft.Rest.ClientRuntime.dll
+C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\Backend\Microsoft.Azure.CognitiveServices.Vision.ComputerVision.dll
+C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\Backend\Microsoft.Rest.ClientRuntime.Azure.dll
+C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\Backend\Microsoft.Rest.ClientRuntime.dll
+C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\UserAuthentication\BouncyCastle.Crypto.dll
+C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\UserAuthentication\MailKit.dll
+C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\UserAuthentication\MailKit.pdb
+C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\UserAuthentication\MimeKit.dll
+C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\UserAuthentication\MimeKit.pdb

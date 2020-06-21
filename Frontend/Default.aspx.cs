@@ -147,6 +147,13 @@ namespace Frontend
 
             }
 
+           
+
+        }
+
+        protected void toForgot(object sender, EventArgs e)
+        {
+            Response.Redirect("Forgot.aspx", false);
         }
     }
 }
