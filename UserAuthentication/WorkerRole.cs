@@ -277,6 +277,7 @@ namespace UserAuthentication
                                 }
                                 else
                                 {
+                                    response.success = false;
                                     response.msg = "failed update password";
                                 }
 
