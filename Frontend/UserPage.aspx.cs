@@ -82,6 +82,7 @@ namespace Frontend
                 urls = responseObject.images;
 
                 msg = responseObject.analyzeTxt;
+
                 analyze.Text = msg[increment];
                 imageAnalyze.ImageUrl = urls[increment];
 

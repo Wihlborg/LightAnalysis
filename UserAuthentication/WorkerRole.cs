@@ -257,7 +257,7 @@ namespace UserAuthentication
                                     stringChars[i] = chars[random.Next(chars.Length)];
                                 }
 
-                                string newPassword = new String(stringChars);
+                                string newPassword = new string(stringChars);
                                 var email = request.account.email;
 
                                 var filter = Builders<Account>.Filter.Eq("email", request.account.email);
@@ -267,7 +267,8 @@ namespace UserAuthentication
                                 {
                                     if (filterResult.ElementAt(0).email == email)
                                     {
-                                        //collection.UpdateOne(filterResult.ElementAt(0).pw, newPassword);
+                                        var update = Builders<Account>.Update.Set("pw", newPassword);
+                                        collection.UpdateOne(filter, update);
                                         response.success = true;
                                         Mail mail = new Mail();
                                         mail.send(email, newPassword);

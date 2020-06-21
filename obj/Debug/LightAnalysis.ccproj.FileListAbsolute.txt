@@ -1095,3 +1095,8 @@ C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\UserAuthentication\MailKit.d
 C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\UserAuthentication\MailKit.pdb
 C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\UserAuthentication\MimeKit.dll
 C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\UserAuthentication\MimeKit.pdb
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\BouncyCastle.Crypto.dll
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\MailKit.dll
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\MailKit.pdb
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\MimeKit.dll
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\MimeKit.pdb

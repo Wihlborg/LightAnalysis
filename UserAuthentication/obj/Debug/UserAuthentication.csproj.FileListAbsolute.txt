@@ -386,3 +386,11 @@ C:\Users\lirid\source\repos\LightAnalysis\UserAuthentication\bin\Debug\MailKit.p
 C:\Users\lirid\source\repos\LightAnalysis\UserAuthentication\bin\Debug\MailKit.xml
 C:\Users\lirid\source\repos\LightAnalysis\UserAuthentication\bin\Debug\MimeKit.pdb
 C:\Users\lirid\source\repos\LightAnalysis\UserAuthentication\bin\Debug\MimeKit.xml
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\UserAuthentication\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\UserAuthentication\bin\Debug\MailKit.dll
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\UserAuthentication\bin\Debug\MimeKit.dll
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\UserAuthentication\bin\Debug\BouncyCastle.Crypto.xml
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\UserAuthentication\bin\Debug\MailKit.pdb
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\UserAuthentication\bin\Debug\MailKit.xml
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\UserAuthentication\bin\Debug\MimeKit.pdb
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\UserAuthentication\bin\Debug\MimeKit.xml
