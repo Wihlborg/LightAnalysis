@@ -38,7 +38,7 @@ public class QueueUtils {
     private StorageCredentials creds;
     private CloudStorageAccount storageAccount;
     private CloudQueueClient queueClient;
-    private CloudQueue inqueue, outqueue;
+    private CloudQueue inqueue, outqueue, metadataqueue, metaresponsequeue;
     private CloudQueueMessage inMessage, outMessage;
 
     Gson gson = new Gson();
@@ -64,6 +64,9 @@ public class QueueUtils {
             // Retrieve a reference to a queue
             outqueue = queueClient.getQueueReference("authrequestqueue");
 
+            metadataqueue = queueClient.getQueueReference("imagerequestqueue");
+            metaresponsequeue = queueClient.getQueueReference("imageresponsequeue");
+
             // Create the queue if it doesn't already exist
             outqueue.createIfNotExists();
         } catch (Exception e){
@@ -80,6 +83,7 @@ public class QueueUtils {
 
         request.setMethod("LOGIN");
         String id = UUID.randomUUID().toString();
+        User.INSTANCE.setLoginId(id);
         request.setId(id);
         request.setAccount(account);
 
@@ -147,6 +151,9 @@ public class QueueUtils {
     }
 
     public void uploadImageToStorage(ImageProxy imageProxy, String fileName, double lat, double lon) throws URISyntaxException, StorageException, IOException {
+
+        initQueues();
+
         //Connect with the blob storage and create the blob where the file is created
         CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
 
@@ -173,7 +180,7 @@ public class QueueUtils {
         Log.d("UPLOAD", "uploadImageToStorage END");
 
         initQueues();
-        addMetadata("https://rallestorage.blob.core.windows.net/images/ " + fileName + ".jpg", lat, lon);
+        addMetadata("https://rallestorage.blob.core.windows.net/images/" + fileName + ".jpg", lat, lon);
 
 
     }
@@ -182,6 +189,7 @@ public class QueueUtils {
         String json = "";
         try {
             json = new JSONObject().put("method", "ADD")
+                                   .put("id", User.INSTANCE.getLoginId())
                                    .put("image",
                                            new JSONObject().put("url", url)
                                                             .put("email", User.INSTANCE.getEmail())
@@ -190,7 +198,15 @@ public class QueueUtils {
 
             outMessage = new CloudQueueMessage(json);
 
-            outqueue.addMessage(outMessage);
+            metadataqueue.addMessage(outMessage);
+            inMessage = null;
+            while (inMessage == null) {
+                inMessage = metaresponsequeue.retrieveMessage();
+            }
+
+
+
+            metaresponsequeue.clear();
         } catch (JSONException | StorageException e){
             e.printStackTrace();
         }
