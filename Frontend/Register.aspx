@@ -19,7 +19,7 @@
             <br />
             <a>Enter password: </a>
             <br />
-            <asp:TextBox CssClass="textbox" ID="Password" runat="server"></asp:TextBox>
+            <asp:TextBox type="password" CssClass="textbox" ID="Password" runat="server"></asp:TextBox>
             <br />
             <asp:Button id="Button1" runat="server" CssClass="button" onclick="ButtonRegister" Text="Register"></asp:Button>
         </form>
