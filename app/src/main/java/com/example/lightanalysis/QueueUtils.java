@@ -181,7 +181,7 @@ public class QueueUtils {
     public void addMetadata(String url, double lat, double lon){
         String json = "";
         try {
-            json = new JSONObject().put("method", "add")
+            json = new JSONObject().put("method", "ADD")
                                    .put("image",
                                            new JSONObject().put("url", url)
                                                             .put("email", User.INSTANCE.getEmail())
