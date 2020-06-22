@@ -107,7 +107,7 @@ class CameraActivity : AppCompatActivity() {
         //Build the image capture use case, setting quality, rotation and resolution
         val imageCaptureConfig = ImageCaptureConfig.Builder().apply {
             setCaptureMode(ImageCapture.CaptureMode.MAX_QUALITY)
-            setTargetRotation(Surface.ROTATION_270)
+            setTargetRotation(Surface.ROTATION_0)
             setTargetResolution(Size(1080, 1920))
         }.build()
 
@@ -133,8 +133,8 @@ class CameraActivity : AppCompatActivity() {
             var long = 0.0
             //Get lat and long
             fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
-                lat = location?.latitude ?: 420.0
-                long = location?.longitude ?: 420.0
+                lat = location?.latitude ?: 0.0
+                long = location?.longitude ?: 0.0
             }
             queueUtils.uploadImageToStorage(imageProxy, System.currentTimeMillis().toString(), lat, long)
             imageProxy.close()
