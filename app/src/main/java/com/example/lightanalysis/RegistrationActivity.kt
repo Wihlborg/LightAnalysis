@@ -27,7 +27,7 @@ class RegistrationActivity : AppCompatActivity() {
 
         }
     }
-
+    //AsyncTask for handling network tasks
     inner class UserRegistrationActivity: AsyncTask<Void, Void, Boolean>() {
         override fun doInBackground(vararg p0: Void?): Boolean {
             val queueUtils = QueueUtils()

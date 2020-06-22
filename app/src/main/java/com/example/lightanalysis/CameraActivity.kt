@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.activity_camera.*
 import java.util.concurrent.Executors
 
 private const val REQUEST_CODE_PERMISSIONS = 10
-private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
+private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.INTERNET)
 private val executor = Executors.newSingleThreadExecutor()
 private val queueUtils = QueueUtils()
 private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -37,7 +37,7 @@ class CameraActivity : AppCompatActivity() {
         } else{
             ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
         }
-
+        //Updates the layout on eg. rotation
         view_finder.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
             updateTransform()
         }
@@ -104,7 +104,7 @@ class CameraActivity : AppCompatActivity() {
 
             updateTransform()
         }
-
+        //Build the image capture use case, setting quality, rotation and resolution
         val imageCaptureConfig = ImageCaptureConfig.Builder().apply {
             setCaptureMode(ImageCapture.CaptureMode.MAX_QUALITY)
             setTargetRotation(Surface.ROTATION_270)
@@ -125,12 +125,13 @@ class CameraActivity : AppCompatActivity() {
 
         CameraX.bindToLifecycle(this, preview, imageCapture)
     }
-
+    //Inner async class for threading
     inner class ImageUploadActivity(proxy: ImageProxy): AsyncTask<Void, Void, Void>(){
         private val imageProxy = proxy
         override fun doInBackground(vararg p0: Void?): Void? {
             var lat = 0.0
             var long = 0.0
+            //Get lat and long
             fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
                 lat = location?.latitude ?: 420.0
                 long = location?.longitude ?: 420.0

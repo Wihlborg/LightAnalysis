@@ -46,7 +46,7 @@ public class LoginActivity  extends AppCompatActivity{
             }
         });
     }
-
+    //Starts the AsyncTask for login
     private void attemptLogin(){
         if (mAuthTask != null){
             return;
@@ -62,7 +62,7 @@ public class LoginActivity  extends AppCompatActivity{
 
 
     }
-
+    //Asynctask for handling network tasks
     class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mUsername;
@@ -88,6 +88,7 @@ public class LoginActivity  extends AppCompatActivity{
             return check;
         }
 
+        //Handler for what to do with the response from server
         @Override
         protected void onPostExecute(final Boolean success) {
             mAuthTask = null;

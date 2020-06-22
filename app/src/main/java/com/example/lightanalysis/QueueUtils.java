@@ -64,16 +64,21 @@ public class QueueUtils {
             // Retrieve a reference to a queue
             outqueue = queueClient.getQueueReference("authrequestqueue");
 
-            metadataqueue = queueClient.getQueueReference("imagerequestqueue");
-            metaresponsequeue = queueClient.getQueueReference("imageresponsequeue");
-
             // Create the queue if it doesn't already exist
             outqueue.createIfNotExists();
+
+            //Queues for metadata
+            metadataqueue = queueClient.getQueueReference("imagerequestqueue");
+            metadataqueue.createIfNotExists();
+            metaresponsequeue = queueClient.getQueueReference("imageresponsequeue");
+            metaresponsequeue.createIfNotExists();
+
+
         } catch (Exception e){
             e.printStackTrace();
         }
     }
-
+    //Method for login
     public boolean attemptLogin(String email, String pw) throws StorageException {
         UserRequest request = new UserRequest();
         Account account = new Account();
@@ -112,7 +117,7 @@ public class QueueUtils {
 
         return response.isSuccess();
     }
-
+    //Method for registration
     public boolean attemptRegistration(String email, String password) throws StorageException{
         UserRequest request = new UserRequest();
         Response response = null;
@@ -149,7 +154,7 @@ public class QueueUtils {
         return response.isSuccess();
 
     }
-
+    //Method for uploading image, calls for addMetaData
     public void uploadImageToStorage(ImageProxy imageProxy, String fileName, double lat, double lon) throws URISyntaxException, StorageException, IOException {
 
         initQueues();
@@ -184,8 +189,8 @@ public class QueueUtils {
 
 
     }
-
-    public void addMetadata(String url, double lat, double lon){
+    //Method for adding metadata
+    private void addMetadata(String url, double lat, double lon){
         String json = "";
         try {
             json = new JSONObject().put("method", "ADD")
