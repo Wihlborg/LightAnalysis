@@ -184,7 +184,7 @@ public class QueueUtils {
             json = new JSONObject().put("method", "add")
                                    .put("image",
                                            new JSONObject().put("url", url)
-                                                            .put("email", "hwihlborg94@gmail.com")
+                                                            .put("email", User.INSTANCE.getEmail())
                                                             .put("latitude", lat)
                                                             .put("longitude", lon)).toString();
 

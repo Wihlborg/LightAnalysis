@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+import com.example.lightanalysis.models.User;
 import com.microsoft.azure.storage.StorageException;
 
 public class LoginActivity  extends AppCompatActivity{
@@ -92,6 +93,7 @@ public class LoginActivity  extends AppCompatActivity{
             mAuthTask = null;
 
             if (success) {
+                User.INSTANCE.setEmail(mUsername);
                 finish();
                 Intent r = new Intent(LoginActivity.this, CameraActivity.class);
                 startActivity(r);
