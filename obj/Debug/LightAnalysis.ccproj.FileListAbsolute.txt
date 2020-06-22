@@ -808,6 +808,14 @@ C:\Users\Oskar\LightAnalysis\obj\Debug\UserAuthentication\zh-Hant\Microsoft.Data
 C:\Users\Oskar\LightAnalysis\obj\Debug\UserAuthentication\zh-Hant\Microsoft.Data.OData.resources.dll
 C:\Users\Oskar\LightAnalysis\obj\Debug\UserAuthentication\zh-Hant\Microsoft.Data.Services.Client.resources.dll
 C:\Users\Oskar\LightAnalysis\obj\Debug\UserAuthentication\zh-Hant\System.Spatial.resources.dll
+C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\Backend\Microsoft.Azure.CognitiveServices.Vision.ComputerVision.dll
+C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\Backend\Microsoft.Rest.ClientRuntime.Azure.dll
+C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\Backend\Microsoft.Rest.ClientRuntime.dll
+C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\UserAuthentication\BouncyCastle.Crypto.dll
+C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\UserAuthentication\MailKit.dll
+C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\UserAuthentication\MailKit.pdb
+C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\UserAuthentication\MimeKit.dll
+C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\UserAuthentication\MimeKit.pdb
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\bin\Debug\ServiceConfiguration.cscfg
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\bin\Debug\ServiceDefinition.csdef
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Frontend\bin\Antlr3.Runtime.dll
@@ -977,11 +985,14 @@ C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\ko\Microso
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\ko\Microsoft.Data.OData.resources.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\ko\Microsoft.Data.Services.Client.resources.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\ko\System.Spatial.resources.dll
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\Microsoft.Azure.CognitiveServices.Vision.ComputerVision.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\Microsoft.Azure.KeyVault.Core.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\Microsoft.Data.Edm.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\Microsoft.Data.OData.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\Microsoft.Data.Services.Client.dll
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\Microsoft.Rest.ClientRuntime.Azure.dll
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\Microsoft.Rest.ClientRuntime.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\Microsoft.WindowsAzure.Diagnostics.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\Microsoft.WindowsAzure.Storage.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\Microsoft.WindowsAzure.Storage.pdb
@@ -1016,6 +1027,7 @@ C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\zh-Hant\Mi
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\zh-Hant\Microsoft.Data.OData.resources.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\zh-Hant\Microsoft.Data.Services.Client.resources.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\zh-Hant\System.Spatial.resources.dll
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\BouncyCastle.Crypto.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\Crc32C.NET.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\de\Microsoft.Data.Edm.resources.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\de\Microsoft.Data.OData.resources.dll
@@ -1042,6 +1054,8 @@ C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\ko\Microsoft.Data.OData.resources.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\ko\Microsoft.Data.Services.Client.resources.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\ko\System.Spatial.resources.dll
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\MailKit.dll
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\MailKit.pdb
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\Microsoft.Azure.KeyVault.Core.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\Microsoft.Data.Edm.dll
@@ -1050,6 +1064,8 @@ C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\Microsoft.WindowsAzure.Diagnostics.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\Microsoft.WindowsAzure.Storage.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\Microsoft.WindowsAzure.Storage.pdb
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\MimeKit.dll
+C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\MimeKit.pdb
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\MonAgentListener.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\mongocrypt.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\MongoDB.Bson.dll
@@ -1084,19 +1100,3 @@ C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\zh-Hant\Microsoft.Data.OData.resources.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\zh-Hant\Microsoft.Data.Services.Client.resources.dll
 C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\zh-Hant\System.Spatial.resources.dll
-C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\Microsoft.Azure.CognitiveServices.Vision.ComputerVision.dll
-C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\Microsoft.Rest.ClientRuntime.Azure.dll
-C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\Backend\Microsoft.Rest.ClientRuntime.dll
-C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\Backend\Microsoft.Azure.CognitiveServices.Vision.ComputerVision.dll
-C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\Backend\Microsoft.Rest.ClientRuntime.Azure.dll
-C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\Backend\Microsoft.Rest.ClientRuntime.dll
-C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\UserAuthentication\BouncyCastle.Crypto.dll
-C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\UserAuthentication\MailKit.dll
-C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\UserAuthentication\MailKit.pdb
-C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\UserAuthentication\MimeKit.dll
-C:\Users\lirid\source\repos\LightAnalysis\obj\Debug\UserAuthentication\MimeKit.pdb
-C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\BouncyCastle.Crypto.dll
-C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\MailKit.dll
-C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\MailKit.pdb
-C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\MimeKit.dll
-C:\Users\Ralle\Desktop\New folder (2)\LightAnalysis\obj\Debug\UserAuthentication\MimeKit.pdb

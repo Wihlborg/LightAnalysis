@@ -199,6 +199,7 @@ namespace Backend
             System.Net.WebResponse response = request.GetResponse();
             System.IO.Stream responseStream =
                 response.GetResponseStream();
+
             Bitmap img = new Bitmap(responseStream);
             
             int alphaTotal = 0;
@@ -219,6 +220,7 @@ namespace Backend
                     greenTotal += pixel.G;
                     blueTotal += pixel.B;
                     nrOfPixels++;
+                    
                 }
             }
             stopwatch.Stop();

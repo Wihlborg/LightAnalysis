@@ -180,8 +180,6 @@ namespace UserAuthentication
                                 var registerFilter = Builders<Account>.Filter.Eq("email", request.account.email);
                                 var registerResult = collection.Find(registerFilter).ToList();
 
-                                
-
                                 if (registerResult.Count == 0)
                                 {
                                     collection.InsertOne(request.account);
