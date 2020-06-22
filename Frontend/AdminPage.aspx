@@ -20,7 +20,7 @@
             <br />
             <asp:Image ID="imageAnalyze" runat="server" Height="350px" Width="1297px" />
             <br />
-            <asp:TextBox ID="analyze" runat="server" TextMode="MultiLine"></asp:TextBox>
+            <asp:TextBox ID="analyze" runat="server" CssClass="textbox" Height="350px" Width="1297px" TextMode="MultiLine"></asp:TextBox>
             <br />
             <asp:Button CssClass="button" ID="exitAdmin" runat="server" Text="Logout" OnClick="ExitAdminPage" />
 
